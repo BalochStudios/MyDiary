@@ -13,17 +13,24 @@
         android:theme="@style/Theme.MyDiary">
         <activity
             android:name=".ui.lockscreen.LockActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.MyDiary.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".ui.lockscreen.PasswordSetActivity" />
+        <activity android:name=".ui.lockscreen.PasswordActivity" />
+        <activity android:name=".ui.lockscreen.PasswordRecoveryActivity" />
+        <activity android:name=".ui.lockscreen.PasswordRecoverSetActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.MyDiary.NoActionBar">
+
         </activity>
     </application>
 

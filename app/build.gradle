@@ -37,6 +37,9 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.2'
     implementation 'androidx.navigation:navigation-fragment:2.3.5'
     implementation 'androidx.navigation:navigation-ui:2.3.5'
+    implementation 'com.github.angads25:toggle:1.1.0'
+    implementation 'com.takwolf.android:lock9view:0.0.11'
+    implementation 'info.hoang8f:fbutton:1.0.5'
 
     
     testImplementation 'junit:junit:4.+'

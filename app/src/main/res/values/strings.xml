@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyDiary</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -10,4 +10,29 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+
+    <string name="app_name">LockScreenApp</string>
+    <string name="tryagain"> Error Try Again </string>
+
+    <string name="wrongpatter"> Wrong Pattern Try Again</string>
+    <string name="drawpattern">  Draw Pattern </string>
+    <string name="redrawpattern">  ReDraw Pattern </string>
+
+    <string name="selectanswer">Select your security question ?  </string>
+    <string name="one">What is your pet name ?</string>
+    <string name="two">Who is your favorite teacher ? </string>
+    <string name="three">Who is your favorite actor ? </string>
+    <string name="four">Who is your favorite actress ? </string>
+    <string name="five">Who is your favorite cricketer ? </string>
+    <string name="six">Who is your favorite footballer ? </string>
+
+    <string name="pleaseselectanswer">Please select a question and write an answer </string>
+    <string name="recoverr">RECOVER</string>
+    <string name="enteranswer">Enter your answer here </string>
+
+    <string name="confirmpass">confirm </string>
+
+    <string name="forgetpass">Forget Password </string>
+    <string name="CONFIRM">Confirm </string>
+   // <string name="required">This will be required to recover password, if in case you forget password </string>
 </resources>
