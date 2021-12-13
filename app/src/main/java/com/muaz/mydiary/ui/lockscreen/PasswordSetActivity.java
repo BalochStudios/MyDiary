@@ -69,7 +69,7 @@ public class PasswordSetActivity extends AppCompatActivity {
 
                             if (sharedPreferences.getBoolean("dnt_show_passwrd_recovery", true)) {
 
-                                Intent i = new Intent(PasswordSetActivity.this, MainActivity.class);
+                                Intent i = new Intent(PasswordSetActivity.this, PasswordActivity.class);
                                 startActivity(i);
                                 editor.putString(AppLockConstants.PASSWORD, enteredPassword);
                                 editor.commit();
@@ -86,7 +86,7 @@ public class PasswordSetActivity extends AppCompatActivity {
 
                         } else {
 
-                            Intent i = new Intent(PasswordSetActivity.this, MainActivity.class);
+                            Intent i = new Intent(PasswordSetActivity.this, PasswordActivity.class);
                             startActivity(i);
                             editor.putString(AppLockConstants.PASSWORD, enteredPassword);
                             editor.commit();
@@ -99,8 +99,7 @@ public class PasswordSetActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), getResources().getText(R.string.wrongpatter), Toast.LENGTH_SHORT).show();
                         isEnteringFirstTime = true;
                         isEnteringSecondTime = false;
-                        //   textView.setVisibility(View.VISIBLE);
-                        //                 retryButton.setEnabled(false);
+
                     }
                 }
             }

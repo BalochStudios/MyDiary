@@ -15,7 +15,7 @@ import com.muaz.mydiary.R;
 import com.muaz.mydiary.databinding.ActivityPasswordBinding;
 import com.takwolf.android.lock9.Lock9View;
 
-import info.hoang8f.widget.FButton;
+
 
 
 public class PasswordActivity extends AppCompatActivity {
@@ -51,7 +51,7 @@ public class PasswordActivity extends AppCompatActivity {
     // password match
                 } else {
                  activityPasswordBinding.textView.setText(getResources().getText(R.string.tryagain));
-                    Toast.makeText(getApplicationContext(), getResources().getText(R.string.tryagain), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PasswordActivity.this, getResources().getText(R.string.tryagain), Toast.LENGTH_SHORT).show();
                     AppLockLogEvents.logEvents(AppLockConstants.PASSWORD_CHECK_SCREEN, "Wrong Password", "wrong_password", "");
                 }
             }

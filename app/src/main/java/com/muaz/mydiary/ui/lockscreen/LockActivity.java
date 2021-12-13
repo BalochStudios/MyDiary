@@ -48,7 +48,7 @@ public class LockActivity extends AppCompatActivity {
                     activityLockBinding.llSetQuestion.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Toast.makeText(LockActivity.this, "Forgot Password", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(LockActivity.this,PasswordRecoverSetActivity.class));
                         }
                     });
 

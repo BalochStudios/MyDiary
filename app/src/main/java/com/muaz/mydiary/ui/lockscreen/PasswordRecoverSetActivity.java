@@ -30,10 +30,6 @@ public class PasswordRecoverSetActivity extends AppCompatActivity {
     ActivityRecoverSetPasswordBinding activityRecoverSetPasswordBinding;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    Context context;
-   /* Spinner questionsSpinner;
-    EditText answer;
-    FButton confirmButton;*/
     int questionNumber = 0;
 
     @Override
@@ -54,7 +50,7 @@ public class PasswordRecoverSetActivity extends AppCompatActivity {
         list.add((String) getResources().getText(R.string.five));
         list.add((String) getResources().getText(R.string.six));
 
-        ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
+        ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<String>(PasswordRecoverSetActivity.this, android.R.layout.simple_spinner_item, list);
         stringArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
        activityRecoverSetPasswordBinding.questionsSpinner.setAdapter(stringArrayAdapter);
 

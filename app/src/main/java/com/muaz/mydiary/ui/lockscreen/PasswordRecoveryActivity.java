@@ -16,7 +16,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.muaz.mydiary.R;
 import com.muaz.mydiary.databinding.ActivityRecoveryPasswordBinding;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,14 +26,14 @@ public class PasswordRecoveryActivity extends AppCompatActivity {
     ActivityRecoveryPasswordBinding activityRecoveryPasswordBinding;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    Context context;
     int questionNumber = 0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        context = getApplicationContext();
-        setContentView(R.layout.activity_recovery_password);
+        activityRecoveryPasswordBinding = ActivityRecoveryPasswordBinding.inflate(getLayoutInflater());
+        View view=activityRecoveryPasswordBinding.getRoot();
+        setContentView(view);
         sharedPreferences = getSharedPreferences(AppLockConstants.MyPREFERENCES, MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
@@ -49,9 +48,9 @@ public class PasswordRecoveryActivity extends AppCompatActivity {
 
         ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
         stringArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-      activityRecoveryPasswordBinding.questionsSpinner.setAdapter(stringArrayAdapter);
+      activityRecoveryPasswordBinding.questionssSpinner.setAdapter(stringArrayAdapter);
 
-      activityRecoveryPasswordBinding.questionsSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+      activityRecoveryPasswordBinding.questionssSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 questionNumber = position;
