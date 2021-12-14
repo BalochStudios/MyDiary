@@ -1,5 +1,6 @@
 package com.muaz.mydiary.ui.lockscreen;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
@@ -37,11 +39,18 @@ public class LockActivity extends AppCompatActivity {
         activityLockBinding.swDiaryLock.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
                 if (activityLockBinding.swDiaryLock.isChecked() == true) {
+                    activityLockBinding.tvPasscode.setTextColor(getResources().getColor(R.color.white));
+                    activityLockBinding.tvSetPasscode.setTextColor(getResources().getColor(R.color.defaultwhite));
+                    activityLockBinding.tvLockQuestion.setTextColor(getResources().getColor(R.color.white));
+                    activityLockBinding.tvSetLockQuestion.setTextColor(getResources().getColor(R.color.defaultwhite));
+                    activityLockBinding.tvFingerPrint.setTextColor(getResources().getColor(R.color.white));
                     activityLockBinding.llSetPasscode.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                           startActivity(new Intent(LockActivity.this,PasswordSetActivity.class));
+                          finish();
 
                         }
                     });
@@ -49,12 +58,28 @@ public class LockActivity extends AppCompatActivity {
                         @Override
                         public void onClick(View view) {
                             startActivity(new Intent(LockActivity.this,PasswordRecoverSetActivity.class));
+                            finish();
                         }
                     });
 
-                    Toast.makeText(LockActivity.this, "Checked", Toast.LENGTH_SHORT).show();
-                } else if (activityLockBinding.swDiaryLock.isChecked() == false) {
-                        Toast.makeText(LockActivity.this, "UnChecked", Toast.LENGTH_SHORT).show();
+                } else  {
+                    activityLockBinding.tvPasscode.setTextColor(getResources().getColor(R.color.dimwhite));
+                    activityLockBinding.tvSetPasscode.setTextColor(getResources().getColor(R.color.dimwhite));
+                    activityLockBinding.tvLockQuestion.setTextColor(getResources().getColor(R.color.dimwhite));
+                    activityLockBinding.tvSetLockQuestion.setTextColor(getResources().getColor(R.color.dimwhite));
+                    activityLockBinding.tvFingerPrint.setTextColor(getResources().getColor(R.color.dimwhite));
+                    activityLockBinding.llSetPasscode.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            return;
+                        }
+                    });
+                    activityLockBinding.llSetQuestion.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            return;
+                        }
+                    });
                     }
                 }
 
@@ -66,5 +91,14 @@ public class LockActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.nav_menu_lock,menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id=item.getItemId();
+        if (id == R.id.navInfo) {
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

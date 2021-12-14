@@ -40,6 +40,7 @@ dependencies {
     implementation 'com.github.angads25:toggle:1.1.0'
     implementation 'com.takwolf.android:lock9view:0.0.11'
     implementation 'info.hoang8f:fbutton:1.0.5'
+    implementation "com.github.skydoves:powerspinner:1.1.9"
 
     
     testImplementation 'junit:junit:4.+'

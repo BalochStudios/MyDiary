@@ -34,5 +34,6 @@
 
     <string name="forgetpass">Forget Password </string>
     <string name="CONFIRM">Confirm </string>
-   // <string name="required">This will be required to recover password, if in case you forget password </string>
+    //
+    <string name="required">This will be required to recover password, if in case you forget password </string>
 </resources>

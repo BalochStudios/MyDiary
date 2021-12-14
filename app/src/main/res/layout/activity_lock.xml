@@ -59,6 +59,8 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="4dp"
+                android:buttonTint="@color/white"
+                android:checked="true"
                 tools:ignore="UseSwitchCompatOrMaterialXml" />
         </RelativeLayout>
 
@@ -87,6 +89,7 @@
                     android:textSize="18sp" />
 
                 <TextView
+                    android:id="@+id/tvSetPasscode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
@@ -112,6 +115,7 @@
                     android:textSize="18sp" />
 
                 <TextView
+                    android:id="@+id/tvSetLockQuestion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tvLockQuestion"
@@ -127,6 +131,7 @@
                 android:layout_marginTop="24dp">
 
                 <TextView
+                    android:id="@+id/tvFingerPrint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-condensed-medium"
