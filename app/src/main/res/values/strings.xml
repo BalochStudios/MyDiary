@@ -36,4 +36,12 @@
     <string name="CONFIRM">Confirm </string>
     //
     <string name="required">This will be required to recover password, if in case you forget password </string>
+    <string-array name="Spinner">
+        <item>Hellow</item>
+        <item>Hellow</item>
+        <item>Hellow</item>
+        <item>Hellow</item>
+        <item>Hellow</item>
+        <item>Hellow</item>
+    </string-array>
 </resources>

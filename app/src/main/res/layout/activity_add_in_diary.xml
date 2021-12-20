@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#04104E"
+    android:orientation="vertical"
+    tools:context=".ui.home.AddInDiaryActivity">
+    <RelativeLayout
+        android:id="@+id/rlDatePicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:id="@+id/rlDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/etDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="19"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF" />
+
+            <EditText
+                android:id="@+id/etMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_toEndOf="@id/etDay"
+                android:layout_toRightOf="@id/etDay"
+                android:text="Month."
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/etYear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_toEndOf="@id/etMonth"
+                android:layout_toRightOf="@id/etMonth"
+                android:text="2021"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <ImageButton
+                android:id="@+id/ibDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/etYear"
+                android:layout_toRightOf="@id/etYear"
+                android:backgroundTint="#04104E"
+                app:tint="@color/white"
+                android:src="@drawable/down" />
+        </RelativeLayout>
+
+        <ImageButton
+            android:id="@+id/ibStickers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:backgroundTint="#04104E"
+            app:tint="@color/white"
+            android:src="@drawable/emoticon" />
+
+
+    </RelativeLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_below="@id/rlDatePicker"
+        android:id="@+id/tilTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="#8000C4FF"
+        android:hint="Title"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etTitle"
+            android:layout_width="match_parent"
+            android:background="#04104E"
+            android:textColor="#FFFFFF"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_below="@id/tilTitle"
+        android:id="@+id/tilDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="#8000C4FF"
+        android:hint="Write more here"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etDescription"
+            android:background="#04104E"
+            android:layout_width="match_parent"
+            android:textColor="#FFFFFF"
+            android:layout_height="wrap_content" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <ScrollView
+        android:layout_gravity="bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="8dp"
+        android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        >
+
+        <ImageButton
+            android:id="@+id/ibBackGround"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_menu_gallery" />
+        <ImageButton
+            android:id="@+id/ibImage"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_menu_gallery" />
+        <ImageButton
+            android:id="@+id/ibIcon"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_menu_gallery" />
+        <ImageButton
+            android:id="@+id/ibEmotIcon"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:backgroundTint="#04104E"
+            app:tint="@color/white"
+            android:src="@drawable/emoticon" />
+        <ImageButton
+            android:id="@+id/ibText"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:backgroundTint="#04104E"
+            app:tint="@color/white"
+            android:src="@drawable/text" />
+        <ImageButton
+            android:id="@+id/ibList"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:backgroundTint="#04104E"
+            app:tint="@color/white"
+            android:src="@drawable/list" />
+        <ImageButton
+            android:id="@+id/ibDesign"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_menu_gallery" />
+
+        <ImageButton
+            android:id="@+id/ibAudio"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:backgroundTint="#04104E"
+            app:tint="@color/white"
+            android:src="@drawable/microphone" />
+        <ImageButton
+            android:id="@+id/ibPainting"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_menu_gallery" />
+
+    </LinearLayout>
+</ScrollView>
+
+
+
+</RelativeLayout>

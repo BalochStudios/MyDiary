@@ -3,6 +3,8 @@ package com.muaz.mydiary.ui.lockscreen;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -11,12 +13,16 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
+import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
 
 import com.muaz.mydiary.R;
 import com.muaz.mydiary.databinding.ActivityLockBinding;
+import com.muaz.mydiary.databinding.ActivityLockInfoBinding;
+
 
 import java.util.zip.Inflater;
 
@@ -97,6 +103,7 @@ public class LockActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id=item.getItemId();
         if (id == R.id.navInfo) {
+
 
         }
         return super.onOptionsItemSelected(item);
