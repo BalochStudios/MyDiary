@@ -15,16 +15,17 @@
             android:id="@+id/rlDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/etDay"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="19"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="#FFFFFF" />
 
-            <EditText
+            <TextView
+                android:id="@+id/etDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="19"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
                 android:id="@+id/etMonth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -35,7 +36,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
-            <EditText
+            <TextView
                 android:id="@+id/etYear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

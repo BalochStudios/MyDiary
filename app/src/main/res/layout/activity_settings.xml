@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#04104E"
+    android:orientation="vertical"
+    android:padding="24dp"
+    tools:context=".SettingsActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Customize"
+        android:textColor="#BEFFFFFF"
+        android:textSize="14sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <ImageButton
+            android:id="@+id/ibMode"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:backgroundTint="#04104E"
+            app:tint="@color/white"
+            android:src="@drawable/emoticon"
+            android:layout_marginEnd="8dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/ibMode"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="Mode Style"
+            android:textColor="#E4FFFFFF"
+            android:textSize="18sp"
+
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <ImageButton
+            android:id="@+id/ibStickerMall"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:backgroundTint="#04104E"
+            app:tint="@color/white"
+            android:src="@drawable/emoticon"
+            android:layout_marginEnd="8dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/ibStickerMall"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="Sticker Mall"
+            android:textColor="#E4FFFFFF"
+            android:textSize="18sp"
+
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <ImageButton
+            android:id="@+id/ibTag"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:backgroundTint="#04104E"
+            app:tint="@color/white"
+            android:src="@drawable/tags"
+            android:layout_marginEnd="8dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/ibTag"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="Tags"
+            android:textColor="#E4FFFFFF"
+            android:textSize="18sp"
+
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <ImageButton
+            android:id="@+id/ibNotification"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:backgroundTint="#04104E"
+            app:tint="@color/white"
+            android:src="@drawable/emoticon"
+            android:layout_marginEnd="8dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/ibNotification"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="Notification"
+            android:textColor="#E4FFFFFF"
+            android:textSize="18sp"
+
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <ImageButton
+            android:id="@+id/ibDiaryLock"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:backgroundTint="#04104E"
+            app:tint="@color/white"
+            android:src="@drawable/lock"
+            android:layout_marginEnd="8dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/ibDiaryLock"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="Diary Lock"
+            android:textColor="#E4FFFFFF"
+            android:textSize="18sp"
+
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <ImageButton
+            android:id="@+id/ibDayOfWeek"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:backgroundTint="#04104E"
+            app:tint="@color/white"
+            android:src="@drawable/ic_baseline_date_range_24"
+            android:layout_marginEnd="8dp"
+            />
+
+        <TextView
+            android:id="@+id/tvDayOfWeek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/ibDayOfWeek"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="First day of the week"
+            android:textColor="#E4FFFFFF"
+            android:textSize="18sp"
+
+            />
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/ibDayOfWeek"
+            android:layout_below="@id/tvDayOfWeek"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="Auto"
+            android:textColor="#BEFFFFFF"
+            android:textSize="14sp"
+
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <ImageButton
+            android:id="@+id/ibDateFormat"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:backgroundTint="#04104E"
+            app:tint="@color/white"
+            android:src="@drawable/ic_baseline_date_range_24"
+            android:layout_marginEnd="8dp"
+            />
+
+        <TextView
+            android:id="@+id/tvDateFormat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/ibDateFormat"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="Diary Date Format"
+            android:textColor="#E4FFFFFF"
+            android:textSize="18sp"
+
+            />
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/ibDateFormat"
+            android:layout_below="@id/tvDateFormat"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="Date"
+            android:textColor="#BEFFFFFF"
+            android:textSize="14sp"
+
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <ImageButton
+            android:id="@+id/ibTimeFormat"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="#04104E"
+            android:src="@drawable/lock"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/ibTimeFormat"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="Time Format"
+            android:textColor="#E4FFFFFF"
+            android:textSize="18sp"
+
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <ImageButton
+            android:id="@+id/ibSkipMode"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="#04104E"
+            android:layout_marginTop="6dp"
+            android:src="@drawable/emoticon"
+            app:tint="@color/white" />
+
+
+        <TextView
+            android:id="@+id/tvSkipMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/ibSkipMode"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="Skip Mode Selection Page"
+            android:textColor="#E4FFFFFF"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvSkipMode"
+            android:layout_toStartOf="@id/swSkipMode"
+            android:layout_toEndOf="@id/ibSkipMode"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="After enable , it will not display the mode selection page"
+            android:textColor="#BEFFFFFF"
+            android:textSize="14sp" />
+
+        <Switch
+            android:id="@+id/swSkipMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="4dp"
+            android:buttonTint="@color/white"
+            android:checked="false"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#4364B5F6"
+        android:layout_marginTop="12dp"
+         />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="About"
+        android:textColor="#BEFFFFFF"
+        android:layout_marginTop="12dp"
+        android:textSize="14sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+
+        <ImageButton
+            android:id="@+id/ibRateUs"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:backgroundTint="#04104E"
+            app:tint="@color/white"
+            android:src="@drawable/ic_baseline_star_rate_24"
+            android:layout_marginEnd="8dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/ibRateUs"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="Rate Us"
+            android:textColor="#E4FFFFFF"
+            android:textSize="18sp"
+
+            />
+    </RelativeLayout>
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp">
+
+        <ImageButton
+            android:id="@+id/ibFeedBack"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="#04104E"
+            android:src="@drawable/ic_baseline_feedback_24"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/ibFeedBack"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="FeeDBack"
+            android:textColor="#E4FFFFFF"
+            android:textSize="18sp"
+
+            />
+</RelativeLayout>
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp">
+
+        <ImageButton
+            android:id="@+id/ibPrivacyPolicy"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="#04104E"
+            android:src="@drawable/lock"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/ibPrivacyPolicy"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="Privacy Policy"
+            android:textColor="#E4FFFFFF"
+            android:textSize="18sp"
+
+            />
+</RelativeLayout>
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp">
+
+        <ImageButton
+            android:id="@+id/ibLanguage"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="#04104E"
+            android:src="@drawable/ic_baseline_language_24"
+            app:tint="@color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/ibLanguage"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="Language"
+            android:textColor="#E4FFFFFF"
+            android:textSize="18sp" />
+
+</RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Version:1.02.54.1156"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textColor="#FFFFFF" />
+
+</LinearLayout>
+</ScrollView>

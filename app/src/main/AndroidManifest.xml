@@ -12,20 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyDiary">
         <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.home.AddInDiaryActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".ui.lockscreen.LockActivity"
             android:exported="true"
-            android:theme="@style/Theme.MyDiary.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.MyDiary.NoActionBar"></activity>
         <activity android:name=".ui.lockscreen.PasswordSetActivity" />
         <activity android:name=".ui.lockscreen.PasswordActivity" />
         <activity android:name=".ui.lockscreen.PasswordRecoveryActivity" />
@@ -34,7 +29,13 @@
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.MyDiary.NoActionBar" />
+            android:theme="@style/Theme.MyDiary.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

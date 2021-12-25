@@ -4,17 +4,27 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Android Project Folder/MyDiary/app/src/main/res/drawable-v24/backgroundpassword.xml" value="0.2169230769230769" />
+        <entry key="..\:/Android Project Folder/MyDiary/app/src/main/res/drawable/a.xml" value="0.2169230769230769" />
+        <entry key="..\:/Android Project Folder/MyDiary/app/src/main/res/drawable/a0.xml" value="0.2169230769230769" />
+        <entry key="..\:/Android Project Folder/MyDiary/app/src/main/res/drawable/a1.xml" value="0.2169230769230769" />
+        <entry key="..\:/Android Project Folder/MyDiary/app/src/main/res/drawable/a_.xml" value="0.2169230769230769" />
         <entry key="..\:/Android Project Folder/MyDiary/app/src/main/res/drawable/emoticon.xml" value="0.20185185185185187" />
         <entry key="..\:/Android Project Folder/MyDiary/app/src/main/res/drawable/ic_baseline_announcement_24.xml" value="0.2169230769230769" />
+        <entry key="..\:/Android Project Folder/MyDiary/app/src/main/res/drawable/ic_baseline_apps_24.xml" value="0.2169230769230769" />
+        <entry key="..\:/Android Project Folder/MyDiary/app/src/main/res/drawable/ic_baseline_loyalty_24.xml" value="0.2169230769230769" />
         <entry key="..\:/Android Project Folder/MyDiary/app/src/main/res/drawable/microphone.xml" value="0.20185185185185187" />
         <entry key="..\:/Android Project Folder/MyDiary/app/src/main/res/layout/activity_add_in_diary.xml" value="0.22" />
         <entry key="..\:/Android Project Folder/MyDiary/app/src/main/res/layout/activity_lock.xml" value="0.2" />
         <entry key="..\:/Android Project Folder/MyDiary/app/src/main/res/layout/activity_lock_info.xml" value="0.20416666666666666" />
+        <entry key="..\:/Android Project Folder/MyDiary/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Android Project Folder/MyDiary/app/src/main/res/layout/activity_password.xml" value="0.20416666666666666" />
         <entry key="..\:/Android Project Folder/MyDiary/app/src/main/res/layout/activity_password_set.xml" value="0.20416666666666666" />
         <entry key="..\:/Android Project Folder/MyDiary/app/src/main/res/layout/activity_recover_set_password.xml" value="0.20416666666666666" />
         <entry key="..\:/Android Project Folder/MyDiary/app/src/main/res/layout/activity_recovery_password.xml" value="0.20416666666666666" />
-        <entry key="..\:/Android Project Folder/MyDiary/app/src/main/res/menu/activity_main_drawer.xml" value="0.20416666666666666" />
+        <entry key="..\:/Android Project Folder/MyDiary/app/src/main/res/layout/activity_settings.xml" value="0.25" />
+        <entry key="..\:/Android Project Folder/MyDiary/app/src/main/res/layout/app_bar_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Android Project Folder/MyDiary/app/src/main/res/layout/content_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Android Project Folder/MyDiary/app/src/main/res/menu/activity_main_drawer.xml" value="0.25" />
         <entry key="..\:/Android Project Folder/MyDiary/app/src/main/res/menu/main.xml" value="0.20416666666666666" />
         <entry key="..\:/Android Project Folder/MyDiary/app/src/main/res/menu/nav_menu_lock.xml" value="0.20416666666666666" />
         <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/layout/content_main.xml" value="0.25416666666666665" />
