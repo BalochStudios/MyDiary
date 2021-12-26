@@ -2,11 +2,14 @@ package com.muaz.mydiary;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,6 +23,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.navigation.NavigationView;
 import com.muaz.mydiary.databinding.ActivityMainBinding;
+import com.muaz.mydiary.ui.lockscreen.LockActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT > 21) {
+            getWindow().setStatusBarColor(Color.parseColor("#00000000"));
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+        }
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -75,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 } else if (id == R.id.actionTag) {
                     Toast.makeText(MainActivity.this,"Tag Level", Toast.LENGTH_SHORT).show();
                 } else if (id == R.id.actionDiaryLock) {
-                    Toast.makeText(MainActivity.this,"Diary Level", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this, LockActivity.class));
                 } else if (id == R.id.actionBackUpRestore) {
                     Toast.makeText(MainActivity.this,"BackUp Level", Toast.LENGTH_SHORT).show();
                 } else if (id == R.id.actionExport) {
@@ -94,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "FAQ", Toast.LENGTH_SHORT);
 
                 } else if (id == R.id.actionSetting) {
-                    Toast.makeText(MainActivity.this, "Setting", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this,SettingsActivity.class));
                 }
                 return true;
             }

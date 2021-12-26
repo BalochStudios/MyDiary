@@ -13,18 +13,21 @@
         android:theme="@style/Theme.MyDiary">
         <activity
             android:name=".SettingsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.MyDiary.NoActionBar"
+            />
         <activity
             android:name=".ui.home.AddInDiaryActivity"
-            android:exported="true"></activity>
+            android:exported="false"/>
         <activity
             android:name=".ui.lockscreen.LockActivity"
-            android:exported="true"
-            android:theme="@style/Theme.MyDiary.NoActionBar"></activity>
+            android:exported="false"
+            android:theme="@style/Theme.MyDiary.NoActionBar"/>
         <activity android:name=".ui.lockscreen.PasswordSetActivity" />
         <activity android:name=".ui.lockscreen.PasswordActivity" />
         <activity android:name=".ui.lockscreen.PasswordRecoveryActivity" />
         <activity android:name=".ui.lockscreen.PasswordRecoverSetActivity" />
+        <activity android:name=".WebActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
