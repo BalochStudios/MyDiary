@@ -36,6 +36,9 @@
     <string name="CONFIRM">Confirm </string>
     //
     <string name="required">This will be required to recover password, if in case you forget password </string>
+    <string name="save">save</string>
+    <string name="enter_title_here">Enter Title here..</string>
+    <string name="enter_description_here">Enter Description here..</string>
     <string-array name="Spinner">
         <item>Hellow</item>
         <item>Hellow</item>

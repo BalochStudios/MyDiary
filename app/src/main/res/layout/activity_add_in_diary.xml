@@ -1,180 +1,241 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#04104E"
-    android:orientation="vertical"
+    android:background="#DFDEDE"
     tools:context=".ui.home.AddInDiaryActivity">
-    <RelativeLayout
-        android:id="@+id/rlDatePicker"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <RelativeLayout
-            android:id="@+id/rlDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/etDay"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="19"
-                android:textColor="#FFFFFF"
-                android:textSize="24sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/etMonth"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:layout_toEndOf="@id/etDay"
-                android:layout_toRightOf="@id/etDay"
-                android:text="Month."
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/etYear"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_toEndOf="@id/etMonth"
-                android:layout_toRightOf="@id/etMonth"
-                android:text="2021"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
-
-            <ImageButton
-                android:id="@+id/ibDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@id/etYear"
-                android:layout_toRightOf="@id/etYear"
-                android:backgroundTint="#04104E"
-                app:tint="@color/white"
-                android:src="@drawable/down" />
-        </RelativeLayout>
-
-        <ImageButton
-            android:id="@+id/ibStickers"
+        <ImageView
+            android:id="@+id/ivCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:backgroundTint="#04104E"
-            app:tint="@color/white"
-            android:src="@drawable/emoticon" />
+            android:contentDescription="@string/app_name"
+            android:padding="8dp"
+            android:src="@drawable/ic_cancel"
+            app:layout_constraintBottom_toBottomOf="@+id/btnSave"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btnSave" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivPreview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/app_name"
+            android:padding="8dp"
+            android:src="@drawable/ic_preview"
+            app:layout_constraintBottom_toBottomOf="@+id/btnSave"
+            app:layout_constraintEnd_toStartOf="@+id/btnSave"
+            app:layout_constraintTop_toTopOf="@+id/btnSave" />
+
+        <ImageView
+            android:id="@+id/ivEyeProtector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/app_name"
+            android:padding="8dp"
+            android:src="@drawable/ic_eye_protector"
+            app:layout_constraintBottom_toBottomOf="@+id/btnSave"
+            app:layout_constraintEnd_toStartOf="@+id/ivPreview"
+            app:layout_constraintTop_toTopOf="@+id/btnSave" />
 
 
-    </RelativeLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_below="@id/rlDatePicker"
-        android:id="@+id/tilTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColorHint="#8000C4FF"
-        android:hint="Title"
-        >
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etTitle"
-            android:layout_width="match_parent"
-            android:background="#04104E"
-            android:textColor="#FFFFFF"
-            android:layout_height="wrap_content" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_below="@id/tilTitle"
-        android:id="@+id/tilDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColorHint="#8000C4FF"
-        android:hint="Write more here"
-        >
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etDescription"
-            android:background="#04104E"
-            android:layout_width="match_parent"
-            android:textColor="#FFFFFF"
-            android:layout_height="wrap_content" />
-
-    </com.google.android.material.textfield.TextInputLayout>
     <ScrollView
-        android:layout_gravity="bottom"
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_marginBottom="8dp"
-        android:layout_height="wrap_content">
-    <LinearLayout
+        android:id="@+id/contentLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/footer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/ivMood"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/ivMood" />
+
+            <ImageView
+                android:id="@+id/ivMood"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/app_name"
+                android:padding="8dp"
+                android:src="@drawable/ic_mood"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <EditText
+                android:id="@+id/etTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@null"
+                android:hint="@string/enter_title_here"
+                android:inputType="textMultiLine"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivMood"
+                tools:layout_editor_absoluteY="8dp" />
+
+            <EditText
+                android:id="@+id/etStory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@null"
+                android:hint="@string/enter_description_here"
+                android:inputType="textMultiLine"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etTitle"
+                tools:layout_editor_absoluteY="8dp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+    <HorizontalScrollView
+        android:id="@+id/footer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="12dp"
-        >
-
-        <ImageButton
-            android:id="@+id/ibBackGround"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:src="@drawable/ic_menu_gallery" />
-        <ImageButton
-            android:id="@+id/ibImage"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:src="@drawable/ic_menu_gallery" />
-        <ImageButton
-            android:id="@+id/ibIcon"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:src="@drawable/ic_menu_gallery" />
-        <ImageButton
-            android:id="@+id/ibEmotIcon"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:backgroundTint="#04104E"
-            app:tint="@color/white"
-            android:src="@drawable/emoticon" />
-        <ImageButton
-            android:id="@+id/ibText"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:backgroundTint="#04104E"
-            app:tint="@color/white"
-            android:src="@drawable/text" />
-        <ImageButton
-            android:id="@+id/ibList"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:backgroundTint="#04104E"
-            app:tint="@color/white"
-            android:src="@drawable/list" />
-        <ImageButton
-            android:id="@+id/ibDesign"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:src="@drawable/ic_menu_gallery" />
-
-        <ImageButton
-            android:id="@+id/ibAudio"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:backgroundTint="#04104E"
-            app:tint="@color/white"
-            android:src="@drawable/microphone" />
-        <ImageButton
-            android:id="@+id/ibPainting"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:src="@drawable/ic_menu_gallery" />
-
-    </LinearLayout>
-</ScrollView>
+        android:layout_margin="8dp"
+        android:background="@drawable/bg_footer"
+        android:elevation="8dp"
+        android:padding="4dp"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
 
 
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-</RelativeLayout>
+            <ImageView
+                android:id="@+id/ivBackgrounds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/app_name"
+                android:padding="8dp"
+                android:src="@drawable/ic_backgrounds" />
+
+            <ImageView
+                android:id="@+id/ivChooseImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/app_name"
+                android:padding="8dp"
+                android:src="@drawable/ic_choose_image" />
+
+            <ImageView
+                android:id="@+id/ivStickers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/app_name"
+                android:padding="8dp"
+                android:src="@drawable/ic_stickers" />
+
+            <ImageView
+                android:id="@+id/ivEmojis"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/app_name"
+                android:padding="8dp"
+                android:src="@drawable/ic_emoji" />
+
+            <ImageView
+                android:id="@+id/ivTextStyles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/app_name"
+                android:padding="8dp"
+                android:src="@drawable/ic_text" />
+
+            <ImageView
+                android:id="@+id/ivLists"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/app_name"
+                android:padding="8dp"
+                android:src="@drawable/ic_lists" />
+
+            <ImageView
+                android:id="@+id/ivTags"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/app_name"
+                android:padding="8dp"
+                android:src="@drawable/ic_tags" />
+
+            <ImageView
+                android:id="@+id/ivRecord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/app_name"
+                android:padding="8dp"
+                android:src="@drawable/ic_record" />
+
+            <ImageView
+                android:id="@+id/ivDraw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/app_name"
+                android:padding="8dp"
+                android:src="@drawable/ic_draw" />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
