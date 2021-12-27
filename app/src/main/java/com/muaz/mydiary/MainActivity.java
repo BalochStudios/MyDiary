@@ -58,24 +58,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                /*if (id == R.id.actionRateUs) {
-                    try {
-                        String storeULR = "market://details?id=" + getPackageName();
-                        Intent storeIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(storeULR));
-                        startActivity(storeIntent);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        try {
-                            String storeURL = "https://play.google.com/store/apps/details?id=" + getPackageName();
-                            Intent storeIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(storeURL));
-                            startActivity(storeIntent);
-                        } catch (Exception exception) {
-                            exception.printStackTrace();
-                            Toast.makeText(HomeActivity.this, "unable to  open this link", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                }*/
                 if (id == R.id.actionPro) {
                     Toast.makeText(MainActivity.this, "Pro Level", Toast.LENGTH_SHORT).show();
                 } else if (id == R.id.actionTheme) {
@@ -97,9 +79,12 @@ public class MainActivity extends AppCompatActivity {
                     intentBuilder.setSubject(getString(R.string.app_name));
                     startActivity(intentBuilder.getIntent());
                 } else if (id == R.id.actionMoreApps) {
+                    String storeULR = "https://play.google.com/store/search?q=Audio Editor & Voice Recorder";
+                    Intent storeIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(storeULR));
+                    startActivity(storeIntent);
                     Toast.makeText(MainActivity.this, "MoreApps", Toast.LENGTH_SHORT).show();
                 } else if (id == R.id.actionFAQ) {
-                    Toast.makeText(MainActivity.this, "FAQ", Toast.LENGTH_SHORT);
+                    startActivity(new Intent(MainActivity.this,FAQActivity.class));
 
                 } else if (id == R.id.actionSetting) {
                     startActivity(new Intent(MainActivity.this,SettingsActivity.class));
