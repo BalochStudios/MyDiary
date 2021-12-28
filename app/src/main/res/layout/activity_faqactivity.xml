@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#030B35"
     tools:context=".FAQActivity">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#04104E"
-        android:orientation="vertical">
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,11 +22,426 @@
             android:theme="@style/ThemeOverlay.AppCompat.Dark" >
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:orientation="vertical">
+        <RelativeLayout
+            android:id="@+id/rlQ1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_margin="8dp"
+            android:background="#030D42"
+            android:layout_marginTop="8dp">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tvQ1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@id/ibQ1"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="1.How to start my own diary if i don't  know what to write about?"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
 
+            <ImageButton
+                android:id="@+id/ibQ1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="12dp"
+                android:backgroundTint="#030D42"
+                android:src="@drawable/ic_baseline_keyboard_arrow_up_24"
+                app:tint="@color/white" />
+            <TextView
+                android:id="@+id/tvAns1"
+                android:layout_below="@id/tvQ1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  - Diaries can help you to record your unique experiences and stories you can write about your plans, places you want to go, movies and dramas you've watched, or express your negative emotions or secret feelings.\n \n -Besides word you can attach photos and recording decorate with stickers and emojis change word colors and font and change themes to make yor diary prettier.\n \n -If you still have no ideas,Tap on Mine at the bottom right side,swipe  down, you will see 'No idea what to write?' section,press Start and follow the instruction to record you day!"
+                android:textColor="#E1FFFFFF"
+                android:textSize="14sp"
+                android:layout_marginTop="2dp"
+                android:visibility="gone"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rlQ2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_margin="8dp"
+            android:background="#030D42"
+            android:layout_marginTop="8dp">
 
+            <TextView
+                android:id="@+id/tvQ2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@id/ibQ2"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="2.How to create tags and search for tags."
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
 
-</ScrollView>
+            <ImageButton
+                android:id="@+id/ibQ2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="12dp"
+                android:backgroundTint="#030D42"
+                android:src="@drawable/ic_baseline_keyboard_arrow_up_24"
+                app:tint="@color/white" />
+            <TextView
+                android:id="@+id/tvAns2"
+                android:layout_below="@id/tvQ2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-To Create a tag. please check Tool Bar at the Editing Page and create tags as you like. \n \n -To search for tags,please go to Menu-> Tag management and see all the tags you have created."
+                android:textColor="#E1FFFFFF"
+                android:textSize="14sp"
+                android:layout_marginTop="2dp"
+                android:visibility="gone"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rlQ3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_margin="8dp"
+            android:background="#030D42"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/tvQ3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@id/ibQ3"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="3.How to set a Diary Lock to protect my secrets?"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <ImageButton
+                android:id="@+id/ibQ3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="12dp"
+                android:backgroundTint="#030D42"
+                android:src="@drawable/ic_baseline_keyboard_arrow_up_24"
+                app:tint="@color/white" />
+            <TextView
+                android:id="@+id/tvAns3"
+                android:layout_below="@id/tvQ3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-With the Lock, you can make sure that others will not see your entries without your permission. \n \n -To set the lock, please go to Menu-> Diary Lock, then enable pattern, password or fingerprint lock(only when your phone supports fingerprint). \n \n -To change lock formats , please go to set passcode page bottom. \n \n -Go to Forgot Password at Unlock page bottom to change password"
+                android:textColor="#E1FFFFFF"
+                android:textSize="14sp"
+                android:layout_marginTop="2dp"
+                android:visibility="gone"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rlQ4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_margin="8dp"
+            android:background="#030D42"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/tvQ4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@id/ibQ4"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="4.Can I use this app on both my phone and tablet? How to see the entries on another devices?"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <ImageButton
+                android:id="@+id/ibQ4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="12dp"
+                android:backgroundTint="#030D42"
+                android:src="@drawable/ic_baseline_keyboard_arrow_up_24"
+                app:tint="@color/white" />
+            <TextView
+                android:id="@+id/tvAns4"
+                android:layout_below="@id/tvQ4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="You can use this app on any android devices, please sync your data first when using another device. \n \n - Please login your account at the original device, go to Menu->Backup&amp;Restore->Backup, or you can turn on auto-backup. \n \n -Then ,login the same account on another device, got to Menu->Backup&amp;Restore->Restore."
+                android:textColor="#E1FFFFFF"
+                android:textSize="14sp"
+                android:layout_marginTop="2dp"
+                android:visibility="gone"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rlQ5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_margin="8dp"
+            android:background="#030D42"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/tvQ5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@id/ibQ5"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="5.I changed to a new phone, or I once deleted this app,how can i get back my data?"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <ImageButton
+                android:id="@+id/ibQ5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="12dp"
+                android:backgroundTint="#030D42"
+                android:src="@drawable/ic_baseline_keyboard_arrow_up_24"
+                app:tint="@color/white" />
+            <TextView
+                android:id="@+id/tvAns5"
+                android:layout_below="@id/tvQ5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-Only when you have backed-up before,the data will be saved in your Drive and able to get back, please login your account and go to Menu-> Backup&amp;Restore->Restore Data. \n \n Please always don't forget to backup your data, or turn on the Auto-Backup to protect your data from any accidents"
+                android:textColor="#E1FFFFFF"
+                android:textSize="14sp"
+                android:layout_marginTop="2dp"
+                android:visibility="gone"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rlQ6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_margin="8dp"
+            android:background="#030D42"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/tvQ6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@id/ibQ6"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="6.I cannot backup my data successfully , any ideas about what happened?"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <ImageButton
+                android:id="@+id/ibQ6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="12dp"
+                android:backgroundTint="#030D42"
+                android:src="@drawable/ic_baseline_keyboard_arrow_up_24"
+                app:tint="@color/white" />
+            <TextView
+                android:id="@+id/tvAns6"
+                android:layout_below="@id/tvQ6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="- Check Internet connection,since the diary might have big files including pictures and recordings, it will need a high-quality network to upload to Google Drive. \n \n -Check whether your Google Drive is login to the right account. \n \n -Check if there is enough space in your Drive and in your phone. \n \n -Go to Google Play Store - your Account - Data &amp; Privacy - Third Party Apps to check whether you give Google Drive access to this app. \n \n -if it still does not work, please use Report on the Backup-Fail page to send us the detailed error reports, we will solve it as soon as possible."
+                android:textColor="#E1FFFFFF"
+                android:textSize="14sp"
+                android:layout_marginTop="2dp"
+                android:visibility="gone"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rlQ7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_margin="8dp"
+            android:background="#030D42"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/tvQ7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@id/ibQ7"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="7.I have backed up successfully ,how can i find my entries in Google Drive?"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <ImageButton
+                android:id="@+id/ibQ7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="12dp"
+                android:backgroundTint="#030D42"
+                android:src="@drawable/ic_baseline_keyboard_arrow_up_24"
+                app:tint="@color/white" />
+            <TextView
+                android:id="@+id/tvAns7"
+                android:layout_below="@id/tvQ7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-In order to protect your privacy ,the entries are not saved as actual documents.Instead ,they are saved as App data and only accessible by your app, so you will not see them in your own folders. \n \n - Data goes with your Google Account, you can login this app on any other device and get back your data,so please take care of your account information seriously. \n \n - If you would like the documents ,please Export them to txt or pdf files and save them to your device."
+                android:textColor="#E1FFFFFF"
+                android:textSize="14sp"
+                android:layout_marginTop="2dp"
+                android:visibility="gone"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rlQ8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_margin="8dp"
+            android:background="#030D42"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/tvQ8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@id/ibQ8"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="8. I have purchased the PRO version but I still cannot access the PRO functions,what shout I do?"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <ImageButton
+                android:id="@+id/ibQ8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="12dp"
+                android:backgroundTint="#030D42"
+                android:src="@drawable/ic_baseline_keyboard_arrow_up_24"
+                app:tint="@color/white" />
+            <TextView
+                android:id="@+id/tvAns8"
+                android:layout_below="@id/tvQ8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Since the purchasing platform is provided by Google, there is a slight possibility that it might be slow or fail to connect to Google Services.Please go to Google Play Store and check whether your account login successfully, and then check your Order History/ \n \n - Go back to the app, and try Restore on the purchasing page. \n \n -If it still does not work, please use Feedback to contact us and provide your Order Number and Order Details."
+                android:textColor="#E1FFFFFF"
+                android:textSize="14sp"
+                android:layout_marginTop="2dp"
+                android:visibility="gone"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rlQ9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_margin="8dp"
+            android:background="#030D42"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/tvQ9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@id/ibQ9"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="9.Can I Change the monthly/yearly subscription to lifetime? Or Can I end my PRO subscription?"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <ImageButton
+                android:id="@+id/ibQ9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="12dp"
+                android:backgroundTint="#030D42"
+                android:src="@drawable/ic_baseline_keyboard_arrow_up_24"
+                app:tint="@color/white" />
+            <TextView
+                android:id="@+id/tvAns9"
+                android:layout_below="@id/tvQ9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-For changing to Lifetime,you will need to cancel the monthly/yearly subscription first,and then purchase Lifetime.Google has ruled that monthly/yearly subscrption and lifetime use different paying channels, so the status will not be switched automatically. \n \n -When you unsubscribe, you will lose all the PRO features including remove ads, auto-backup,themes,stickers,etc.If you still want to end it,please subscribe by yourself in your Google Play Store Account-> Order History and cancel it."
+                android:textColor="#E1FFFFFF"
+                android:textSize="14sp"
+                android:layout_marginTop="2dp"
+                android:visibility="gone"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/rlQ10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_margin="8dp"
+            android:background="#030D42"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/tvQ10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@id/ibQ10"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="10.Other Questions."
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <ImageButton
+                android:id="@+id/ibQ10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="12dp"
+                android:backgroundTint="#030D42"
+                android:src="@drawable/ic_baseline_keyboard_arrow_up_24"
+                app:tint="@color/white" />
+            <TextView
+                android:id="@+id/tvAns10"
+                android:layout_below="@id/tvQ10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="If you Still have any other questions with this app or you have suggestions for us, please go to Feedback to send us emails at betterapp.  feedback2@outlook.com.it will be better if you can provide us with more details or screenshots, which will help us to understand your questions,thank you!"
+                android:textColor="#E1FFFFFF"
+                android:textSize="14sp"
+                android:layout_marginTop="2dp"
+                android:visibility="gone"
+                />
+        </RelativeLayout>
+        </LinearLayout>
+        </ScrollView>
+</LinearLayout>

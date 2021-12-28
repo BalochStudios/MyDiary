@@ -53,8 +53,8 @@
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_emoji"
                 android:backgroundTint="#04104E"
-                android:src="@drawable/emoticon"
                 app:tint="@color/white" />
 
             <TextView
@@ -82,7 +82,7 @@
                 android:layout_height="36dp"
                 android:layout_marginEnd="8dp"
                 android:backgroundTint="#04104E"
-                android:src="@drawable/emoticon"
+                android:src="@drawable/ic_emoji"
                 app:tint="@color/white" />
 
             <TextView
@@ -305,7 +305,7 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="8dp"
                 android:backgroundTint="#04104E"
-                android:src="@drawable/emoticon"
+                android:src="@drawable/ic_emoji"
                 app:tint="@color/white" />
 
 

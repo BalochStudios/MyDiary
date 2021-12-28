@@ -33,22 +33,12 @@ public class PasswordSetActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         activityPasswordSetBinding = ActivityPasswordSetBinding.inflate(getLayoutInflater());
-        View view=activityPasswordSetBinding.getRoot();
+        View view = activityPasswordSetBinding.getRoot();
         setContentView(view);
-
-
         sharedPreferences = getSharedPreferences(AppLockConstants.MyPREFERENCES, MODE_PRIVATE);
         editor = sharedPreferences.edit();
-//        textView2.setVisibility(View.VISIBLE);
-//        textView2.setText("Draw Pattern");
-//        textView.setVisibility(View.INVISIBLE);
-        //Google Analytics*/
         activityPasswordSetBinding.tvTextPassword.setText(getResources().getText(R.string.drawpattern));
-
-
-
-
-      activityPasswordSetBinding.SetLock9View.setCallBack(new Lock9View.CallBack() {
+        activityPasswordSetBinding.SetLock9View.setCallBack(new Lock9View.CallBack() {
             @Override
             public void onFinish(String password) {
 
@@ -57,7 +47,7 @@ public class PasswordSetActivity extends AppCompatActivity {
                     enteredPassword = password;
                     isEnteringFirstTime = false;
                     isEnteringSecondTime = true;
-                  activityPasswordSetBinding.tvTextPassword.setText(getResources().getText(R.string.redrawpattern));
+                    activityPasswordSetBinding.tvTextPassword.setText(getResources().getText(R.string.redrawpattern));
 
                 } else if (isEnteringSecondTime) {
 
@@ -95,7 +85,7 @@ public class PasswordSetActivity extends AppCompatActivity {
                         }
                     } else {
 
-                       activityPasswordSetBinding.tvTextPassword.setText(getResources().getText(R.string.drawpattern));
+                        activityPasswordSetBinding.tvTextPassword.setText(getResources().getText(R.string.drawpattern));
                         Toast.makeText(getApplicationContext(), getResources().getText(R.string.wrongpatter), Toast.LENGTH_SHORT).show();
                         isEnteringFirstTime = true;
                         isEnteringSecondTime = false;

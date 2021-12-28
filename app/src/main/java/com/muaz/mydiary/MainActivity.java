@@ -59,7 +59,16 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
                 if (id == R.id.actionPro) {
-                    Toast.makeText(MainActivity.this, "Pro Level", Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    builder.setTitle("Upgrade to Pro");
+                    builder.setMessage("Sorry at this time, Pro Level of App is not Available for You");
+                    builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    });
+                    builder.show();
                 } else if (id == R.id.actionTheme) {
                     Toast.makeText(MainActivity.this,"Theme Level", Toast.LENGTH_SHORT).show();
                 } else if (id == R.id.actionTag) {
@@ -71,7 +80,16 @@ public class MainActivity extends AppCompatActivity {
                 } else if (id == R.id.actionExport) {
                     Toast.makeText(MainActivity.this,"Export Level", Toast.LENGTH_SHORT).show();
                 } else if (id == R.id.actionDonate) {
-                    Toast.makeText(MainActivity.this,"Donate Level", Toast.LENGTH_SHORT).show();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    builder.setTitle("Donate SomeThing");
+                    builder.setMessage("Sorry at this time, Pro Level of App is not Available for You .So you can't Donate anythings to other's");
+                    builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    });
+                    builder.show();
                 } else if (id == R.id.actionShare) {
                     ShareCompat.IntentBuilder intentBuilder = ShareCompat.IntentBuilder.from(MainActivity.this);
                     intentBuilder.setType("text/plain");
