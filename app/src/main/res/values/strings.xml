@@ -39,6 +39,9 @@
     <string name="save">save</string>
     <string name="enter_title_here">Enter Title here..</string>
     <string name="enter_description_here">Enter Description here..</string>
+    <string name="my_mood_today">My Mood Today</string>
+    <string name="backgrounds">Backgrounds</string>
+    <string name="text_styling">Text Styling</string>
     <string-array name="Spinner">
         <item>Hellow</item>
         <item>Hellow</item>

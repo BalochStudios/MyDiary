@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DFDEDE"
-    tools:context=".ui.home.AddInDiaryActivity">
+    android:background="@color/screen_bg"
+    tools:context=".ui.home.AddDiaryActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header"
@@ -67,7 +67,7 @@
         android:id="@+id/contentLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/footer"
+        app:layout_constraintBottom_toTopOf="@id/rvImages"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,9 +85,54 @@
                 android:text="@string/app_name"
                 android:textSize="22sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/ivMood"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/ivMood" />
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardMood"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp"
+                app:cardUseCompatPadding="true"
+                app:contentPadding="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDate">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:id="@+id/tvTodayMode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/my_mood_today"
+                        android:textAlignment="center"
+                        android:textSize="18sp"
+                        android:layout_marginTop="4dp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvMoods"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tvTodayMode"
+                        tools:itemCount="2" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
 
             <ImageView
                 android:id="@+id/ivMood"
@@ -96,6 +141,7 @@
                 android:contentDescription="@string/app_name"
                 android:padding="8dp"
                 android:src="@drawable/ic_mood"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -111,8 +157,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ivMood"
-                tools:layout_editor_absoluteY="8dp" />
+                app:layout_constraintTop_toBottomOf="@id/cardMood" />
 
             <EditText
                 android:id="@+id/etStory"
@@ -125,13 +170,21 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/etTitle"
-                tools:layout_editor_absoluteY="8dp" />
+                app:layout_constraintTop_toBottomOf="@id/etTitle" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvImages"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/footer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:itemCount="1" />
 
     <HorizontalScrollView
         android:id="@+id/footer"
@@ -151,6 +204,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:orientation="horizontal">
 
             <ImageView
@@ -178,7 +232,8 @@
                 android:layout_marginEnd="8dp"
                 android:contentDescription="@string/app_name"
                 android:padding="8dp"
-                android:src="@drawable/ic_stickers" />
+                android:src="@drawable/ic_stickers"
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/ivEmojis"
@@ -187,7 +242,8 @@
                 android:layout_marginEnd="8dp"
                 android:contentDescription="@string/app_name"
                 android:padding="8dp"
-                android:src="@drawable/ic_emoji" />
+                android:src="@drawable/ic_emoji"
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/ivTextStyles"
@@ -205,7 +261,8 @@
                 android:layout_marginEnd="8dp"
                 android:contentDescription="@string/app_name"
                 android:padding="8dp"
-                android:src="@drawable/ic_lists" />
+                android:src="@drawable/ic_lists"
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/ivTags"
@@ -223,7 +280,8 @@
                 android:layout_marginEnd="8dp"
                 android:contentDescription="@string/app_name"
                 android:padding="8dp"
-                android:src="@drawable/ic_record" />
+                android:src="@drawable/ic_record"
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/ivDraw"
@@ -237,5 +295,179 @@
         </LinearLayout>
 
     </HorizontalScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/backgroundsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@color/white"
+        android:padding="16dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <TextView
+            android:id="@+id/tvBackgrounds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/backgrounds"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/ivCancelBackgrounds"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ivCancelBackgrounds" />
+
+        <ImageView
+            android:id="@+id/ivCancelBackgrounds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/app_name"
+            android:padding="4dp"
+            android:src="@drawable/ic_cancel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivCancelBackgrounds">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvBackgrounds"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false" />
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/textStyleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@color/white"
+        android:padding="16dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/tvTextStyles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/text_styling"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/ivCancelTextStyling"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ivCancelTextStyling" />
+
+        <ImageView
+            android:id="@+id/ivCancelTextStyling"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/app_name"
+            android:padding="4dp"
+            android:src="@drawable/ic_cancel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/textAlignmentLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivCancelTextStyling">
+
+            <ImageView
+                android:id="@+id/ivLeftAlign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/app_name"
+                android:padding="8dp"
+                android:src="@drawable/ic_align_left" />
+
+            <ImageView
+                android:id="@+id/ivCenterAlign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/app_name"
+                android:padding="8dp"
+                android:src="@drawable/ic_align_center" />
+
+            <ImageView
+                android:id="@+id/ivRightAlign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:contentDescription="@string/app_name"
+                android:padding="8dp"
+                android:src="@drawable/ic_align_right" />
+
+
+        </LinearLayout>
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/sizeSlider"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:contentDescription="@string/app_name"
+            android:stepSize="1"
+            android:valueFrom="0"
+            android:valueTo="30"
+            app:labelBehavior="gone"
+            app:layout_constraintBottom_toBottomOf="@id/textAlignmentLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/textAlignmentLayout"
+            app:layout_constraintTop_toTopOf="@id/textAlignmentLayout"
+            app:thumbColor="@color/purple_700"
+            app:tickVisible="false"
+            app:trackColorActive="@color/purple_700"
+            app:trackColorInactive="#A1414141" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvColors"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textAlignmentLayout"
+            tools:itemCount="1" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvFonts"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvColors" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
