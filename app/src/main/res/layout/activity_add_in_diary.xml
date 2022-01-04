@@ -11,6 +11,7 @@
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -110,10 +111,10 @@
                         android:id="@+id/tvTodayMode"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
                         android:text="@string/my_mood_today"
                         android:textAlignment="center"
                         android:textSize="18sp"
-                        android:layout_marginTop="4dp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
@@ -172,6 +173,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/etTitle" />
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvTags"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/etStory"
+                tools:itemCount="1"
+                tools:layout_editor_absoluteY="16dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
@@ -465,6 +477,85 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rvColors" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tagsLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="16dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/tvTags"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tags"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/ivCancelTags"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ivCancelTags" />
+
+        <ImageView
+            android:id="@+id/ivCancelTags"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/app_name"
+            android:padding="4dp"
+            android:src="@drawable/ic_cancel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAlreadyTags"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivCancelTags"
+            tools:itemCount="1"
+            tools:layout_editor_absoluteY="16dp" />
+
+        <ImageView
+            android:id="@+id/ivSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/app_name"
+            android:padding="16dp"
+            android:src="@drawable/ic_send"
+            app:layout_constraintBottom_toBottomOf="@+id/tilTag"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tilTag" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilTag"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toStartOf="@+id/ivSend"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rvAlreadyTags">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etTag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/tag_like_fun_family_and_press_enter"
+                android:inputType="text"
+                android:maxLength="20" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

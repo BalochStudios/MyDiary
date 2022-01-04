@@ -10,6 +10,7 @@
         <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/drawable/ic_align_left.xml" value="0.2703125" />
         <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/drawable/ic_align_right.xml" value="0.2703125" />
         <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/drawable/ic_mood.xml" value="0.2703125" />
+        <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/drawable/ic_send.xml" value="0.2703125" />
         <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/drawable/ic_smiling.xml" value="0.2703125" />
         <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/layout/activity_add_in_diary.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/layout/activity_main.xml" value="0.25025641025641027" />
@@ -24,6 +25,7 @@
         <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/layout/item_fonts.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/layout/item_image.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/layout/item_mood.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/layout/item_tag.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/menu/nav_menu_lock.xml" value="0.25416666666666665" />
       </map>
     </option>

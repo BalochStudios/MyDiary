@@ -17,13 +17,13 @@ public class Diary {
     private int textSize;
     private int textDirection;
     private int textColorId;
-    private List<String> tagsList;
+    private List<Tag> tagsList;
     private int saveType;
 
     public Diary() {
     }
 
-    public Diary(String date, String title, String description, int moodId, int backgroundId, List<Bitmap> imageList, int fontId, int textSize, int textDirection, int textColorId, List<String> tagsList, int saveType) {
+    public Diary(String date, String title, String description, int moodId, int backgroundId, List<Bitmap> imageList, int fontId, int textSize, int textDirection, int textColorId, List<Tag> tagsList, int saveType) {
         this.date = date;
         this.title = title;
         this.description = description;
@@ -38,7 +38,8 @@ public class Diary {
         this.saveType = saveType;
     }
 
-    public Diary(Integer id, String date, String title, String description, int moodId, int backgroundId, List<Bitmap> imageList, int fontId, int textSize, int textDirection, int textColorId, List<String> tagsList, int saveType) {
+
+    public Diary(Integer id, String date, String title, String description, int moodId, int backgroundId, List<Bitmap> imageList, int fontId, int textSize, int textDirection, int textColorId, List<Tag> tagsList, int saveType) {
         this.id = id;
         this.date = date;
         this.title = title;
@@ -150,11 +151,11 @@ public class Diary {
         this.textColorId = textColorId;
     }
 
-    public List<String> getTagsList() {
+    public List<Tag> getTagsList() {
         return tagsList;
     }
 
-    public void setTagsList(List<String> tagsList) {
+    public void setTagsList(List<Tag> tagsList) {
         this.tagsList = tagsList;
     }
 }

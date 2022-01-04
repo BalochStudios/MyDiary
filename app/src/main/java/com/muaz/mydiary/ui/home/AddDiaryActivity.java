@@ -4,11 +4,14 @@ import static com.muaz.mydiary.utils.Constants.FONT_SIZE;
 import static com.muaz.mydiary.utils.Constants.SAVE_TYPE_DRAFT;
 import static com.muaz.mydiary.utils.Constants.SAVE_TYPE_SAVED;
 import static com.muaz.mydiary.utils.Constants.DEFAULT;
+import static com.muaz.mydiary.utils.Constants.TAG_ADAPTER_DELETE_TYPE;
+import static com.muaz.mydiary.utils.Constants.TAG_ADAPTER_TYPE;
 import static com.muaz.mydiary.utils.Constants.TEXT_DIRECTION_CENTER;
 import static com.muaz.mydiary.utils.Constants.TEXT_DIRECTION_LEFT;
 import static com.muaz.mydiary.utils.Constants.TEXT_DIRECTION_RIGHT;
 import static com.muaz.mydiary.utils.UtilityFunctions.makeToast;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -18,15 +21,18 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -41,11 +47,13 @@ import com.muaz.mydiary.adapter.ColorsAdapter;
 import com.muaz.mydiary.adapter.FontsAdapter;
 import com.muaz.mydiary.adapter.ImagesAdapter;
 import com.muaz.mydiary.adapter.MoodAdapter;
+import com.muaz.mydiary.adapter.TagsAdapter;
 import com.muaz.mydiary.database.DbHelper;
 import com.muaz.mydiary.databinding.ActivityAddInDiaryBinding;
 import com.muaz.mydiary.models.Color;
 import com.muaz.mydiary.models.Diary;
 import com.muaz.mydiary.models.Mood;
+import com.muaz.mydiary.models.Tag;
 import com.muaz.mydiary.utils.Constants;
 import com.muaz.mydiary.utils.DataSource;
 import com.muaz.mydiary.utils.UtilityFunctions;
@@ -54,18 +62,22 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
 
 public class AddDiaryActivity extends AppCompatActivity {
 
     ActivityAddInDiaryBinding binding;
     Calendar calendar;
-    ArrayList<Bitmap> bitmaps = new ArrayList<>();
+    List<Bitmap> bitmaps = new ArrayList<>();
+    List<Tag> thisDiaryTags = new ArrayList<>();
+    List<Tag> allTags = new ArrayList<>();
     MoodAdapter moodAdapter;
     int saveType = SAVE_TYPE_DRAFT;
     int backgroundId = DEFAULT;
     int fontId = DEFAULT;
     int colorId = DEFAULT;
     int textDirection = TEXT_DIRECTION_LEFT;
+    TagsAdapter thisDiaryTagsAdapter;
 
     DbHelper dbHelper;
 
@@ -75,6 +87,7 @@ public class AddDiaryActivity extends AppCompatActivity {
         binding = ActivityAddInDiaryBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        showCustomUI();
         dbHelper = new DbHelper(this);
         setMoods();
         setCalendar();
@@ -84,7 +97,27 @@ public class AddDiaryActivity extends AppCompatActivity {
         setColors();
         setSizeSlider();
         setFonts();
+        setAllTags();
     }
+
+    private void setAllTags() {
+        allTags = dbHelper.getAllTags();
+        @SuppressLint("NotifyDataSetChanged")
+        TagsAdapter tagsAdapter = new TagsAdapter(allTags, TAG_ADAPTER_TYPE, (adapterView, view, i, l) -> {
+            //add to this diary list
+            thisDiaryTags.add(allTags.get(i));
+            if (thisDiaryTagsAdapter == null) {
+                setThisDiaryTagsAdapter();
+            } else {
+                thisDiaryTagsAdapter.notifyDataSetChanged();
+            }
+        }, (adapterView, view, i, l) -> {
+            //ignore this
+        });
+        binding.rvAlreadyTags.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+        binding.rvAlreadyTags.setAdapter(tagsAdapter);
+    }
+
 
     @Override
     public void onBackPressed() {
@@ -161,18 +194,21 @@ public class AddDiaryActivity extends AppCompatActivity {
             textDirection = TEXT_DIRECTION_RIGHT;
             binding.etTitle.setGravity(Gravity.END);
             binding.etStory.setGravity(Gravity.END);
+            binding.tvDate.setGravity(Gravity.END);
         });
 
         binding.ivLeftAlign.setOnClickListener(view -> {
             textDirection = TEXT_DIRECTION_LEFT;
             binding.etTitle.setGravity(Gravity.START);
             binding.etStory.setGravity(Gravity.START);
+            binding.tvDate.setGravity(Gravity.START);
         });
 
         binding.ivCenterAlign.setOnClickListener(view -> {
             textDirection = TEXT_DIRECTION_CENTER;
             binding.etTitle.setGravity(Gravity.CENTER);
             binding.etStory.setGravity(Gravity.CENTER);
+            binding.tvDate.setGravity(Gravity.CENTER);
         });
     }
 
@@ -245,16 +281,48 @@ public class AddDiaryActivity extends AppCompatActivity {
             binding.footer.setVisibility(View.VISIBLE);
         });
 
-        binding.ivCancel.setOnClickListener(view -> {
-            showProperExitDialog();
-        });
+        binding.ivCancel.setOnClickListener(view -> showProperExitDialog());
 
         binding.btnSave.setOnClickListener(view -> {
             saveType = SAVE_TYPE_SAVED;
             saveDiary();
         });
+
+        binding.ivTags.setOnClickListener(view -> {
+            closeKeyboard();
+            binding.tagsLayout.setVisibility(View.VISIBLE);
+            binding.footer.setVisibility(View.GONE);
+        });
+
+        binding.ivCancelTags.setOnClickListener(view -> {
+            closeKeyboard();
+            binding.tagsLayout.setVisibility(View.GONE);
+            binding.footer.setVisibility(View.VISIBLE);
+        });
+
+        binding.ivSend.setOnClickListener(view -> {
+            closeKeyboard();
+            String tag = Objects.requireNonNull(binding.etTag.getText()).toString().replace(" ", "");
+            thisDiaryTags.add(new Tag(tag));
+            binding.etTag.setText("");
+            setThisDiaryTagsAdapter();
+        });
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    private void setThisDiaryTagsAdapter() {
+        thisDiaryTagsAdapter = new TagsAdapter(thisDiaryTags, TAG_ADAPTER_DELETE_TYPE, (adapterView, view1, i, l) -> {
+
+        }, (adapterView, view1, i, l) -> {
+            //removeTag
+            thisDiaryTags.remove(thisDiaryTags.get(i));
+            thisDiaryTagsAdapter.notifyDataSetChanged();
+        });
+        binding.rvTags.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+        binding.rvTags.setAdapter(thisDiaryTagsAdapter);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
     private void saveDiary() {
         Diary diary = new Diary(
                 binding.tvDate.getText().toString(),
@@ -267,12 +335,13 @@ public class AddDiaryActivity extends AppCompatActivity {
                 (int) binding.tvDate.getTextSize(),
                 textDirection,
                 colorId,
-                new ArrayList<>(),
+                thisDiaryTags,
                 saveType
         );
         long result = dbHelper.addToDiary(diary);
         if (result != -1) {
             makeToast(AddDiaryActivity.this, "Saved Successfully");
+            finish();
         } else {
             makeToast(AddDiaryActivity.this, "Something went wrong");
         }
@@ -315,6 +384,13 @@ public class AddDiaryActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Task Cancelled", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void showCustomUI() {
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
     }
 
 
