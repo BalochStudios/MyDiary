@@ -41,6 +41,7 @@ dependencies {
     implementation 'com.takwolf.android:lock9view:0.0.11'
     implementation 'info.hoang8f:fbutton:1.0.5'
     implementation "com.github.skydoves:powerspinner:1.1.9"
+    implementation 'com.ms-square:expandableTextView:0.1.4'
 
     implementation 'com.github.dhaval2404:imagepicker:2.1'
     implementation 'com.github.divyanshub024:AndroidDraw:v0.1'

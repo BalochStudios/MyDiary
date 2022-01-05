@@ -42,6 +42,12 @@ public class LockActivity extends AppCompatActivity {
         setTitle("Lock");
         setSupportActionBar(activityLockBinding.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        activityLockBinding.toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         activityLockBinding.swDiaryLock.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
