@@ -11,6 +11,7 @@ public class Diary {
     private String title;
     private String description;
     private int moodId;
+    private int categoryId;
     private int backgroundId;
     private List<Bitmap> imageList;
     private int fontId;
@@ -23,11 +24,12 @@ public class Diary {
     public Diary() {
     }
 
-    public Diary(String date, String title, String description, int moodId, int backgroundId, List<Bitmap> imageList, int fontId, int textSize, int textDirection, int textColorId, List<Tag> tagsList, int saveType) {
+    public Diary(String date, String title, String description, int moodId, int categoryId, int backgroundId, List<Bitmap> imageList, int fontId, int textSize, int textDirection, int textColorId, List<Tag> tagsList, int saveType) {
         this.date = date;
         this.title = title;
         this.description = description;
         this.moodId = moodId;
+        this.categoryId = categoryId;
         this.backgroundId = backgroundId;
         this.imageList = imageList;
         this.fontId = fontId;
@@ -38,13 +40,13 @@ public class Diary {
         this.saveType = saveType;
     }
 
-
-    public Diary(Integer id, String date, String title, String description, int moodId, int backgroundId, List<Bitmap> imageList, int fontId, int textSize, int textDirection, int textColorId, List<Tag> tagsList, int saveType) {
+    public Diary(Integer id, String date, String title, String description, int moodId, int categoryId, int backgroundId, List<Bitmap> imageList, int fontId, int textSize, int textDirection, int textColorId, List<Tag> tagsList, int saveType) {
         this.id = id;
         this.date = date;
         this.title = title;
         this.description = description;
         this.moodId = moodId;
+        this.categoryId = categoryId;
         this.backgroundId = backgroundId;
         this.imageList = imageList;
         this.fontId = fontId;
@@ -157,5 +159,13 @@ public class Diary {
 
     public void setTagsList(List<Tag> tagsList) {
         this.tagsList = tagsList;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 }

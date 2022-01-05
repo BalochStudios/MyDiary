@@ -4,13 +4,16 @@ import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.muaz.mydiary.databinding.ItemDiaryBinding;
 import com.muaz.mydiary.models.Diary;
 import com.muaz.mydiary.models.Mood;
 import com.muaz.mydiary.utils.Constants;
 import com.muaz.mydiary.utils.DataSource;
+
 import java.util.List;
 
 public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryHolder> {
@@ -66,6 +69,9 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryHolder>
                     binding.ivDiaryMood.setImageResource(moodList.get(i).getMoodImage());
                 }
             }
+
+            itemView.setOnClickListener(view ->
+                    onItemClickListener.onItemClick(null, itemView, position, 0));
 
         }
     }

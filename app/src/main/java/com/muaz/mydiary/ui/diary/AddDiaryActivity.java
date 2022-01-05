@@ -1,9 +1,9 @@
-package com.muaz.mydiary.ui.home;
+package com.muaz.mydiary.ui.diary;
 
+import static com.muaz.mydiary.utils.Constants.DEFAULT;
 import static com.muaz.mydiary.utils.Constants.FONT_SIZE;
 import static com.muaz.mydiary.utils.Constants.SAVE_TYPE_DRAFT;
 import static com.muaz.mydiary.utils.Constants.SAVE_TYPE_SAVED;
-import static com.muaz.mydiary.utils.Constants.DEFAULT;
 import static com.muaz.mydiary.utils.Constants.TAG_ADAPTER_DELETE_TYPE;
 import static com.muaz.mydiary.utils.Constants.TAG_ADAPTER_TYPE;
 import static com.muaz.mydiary.utils.Constants.TEXT_DIRECTION_CENTER;
@@ -21,18 +21,17 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -41,9 +40,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.divyanshu.draw.activity.DrawingActivity;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.slider.Slider;
-import com.muaz.mydiary.R;
 import com.muaz.mydiary.adapter.BackgroundsAdapter;
 import com.muaz.mydiary.adapter.ColorsAdapter;
+import com.muaz.mydiary.adapter.DiaryCategoryAdapter;
 import com.muaz.mydiary.adapter.FontsAdapter;
 import com.muaz.mydiary.adapter.ImagesAdapter;
 import com.muaz.mydiary.adapter.MoodAdapter;
@@ -52,6 +51,7 @@ import com.muaz.mydiary.database.DbHelper;
 import com.muaz.mydiary.databinding.ActivityAddInDiaryBinding;
 import com.muaz.mydiary.models.Color;
 import com.muaz.mydiary.models.Diary;
+import com.muaz.mydiary.models.DiaryCategory;
 import com.muaz.mydiary.models.Mood;
 import com.muaz.mydiary.models.Tag;
 import com.muaz.mydiary.utils.Constants;
@@ -71,13 +71,15 @@ public class AddDiaryActivity extends AppCompatActivity {
     List<Bitmap> bitmaps = new ArrayList<>();
     List<Tag> thisDiaryTags = new ArrayList<>();
     List<Tag> allTags = new ArrayList<>();
-    MoodAdapter moodAdapter;
     int saveType = SAVE_TYPE_DRAFT;
     int backgroundId = DEFAULT;
     int fontId = DEFAULT;
     int colorId = DEFAULT;
     int textDirection = TEXT_DIRECTION_LEFT;
-    TagsAdapter thisDiaryTagsAdapter;
+
+    private TagsAdapter thisDiaryTagsAdapter;
+    private MoodAdapter moodAdapter;
+    private DiaryCategoryAdapter diaryCategoryAdapter;
 
     DbHelper dbHelper;
 
@@ -85,11 +87,12 @@ public class AddDiaryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityAddInDiaryBinding.inflate(getLayoutInflater());
+        setFullScreenFlags();
         setContentView(binding.getRoot());
 
-        showCustomUI();
         dbHelper = new DbHelper(this);
         setMoods();
+        setCategories();
         setCalendar();
         setListeners();
         setAlignmentListeners();
@@ -100,11 +103,15 @@ public class AddDiaryActivity extends AppCompatActivity {
         setAllTags();
     }
 
+    private void setFullScreenFlags() {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    }
+
     private void setAllTags() {
         allTags = dbHelper.getAllTags();
         @SuppressLint("NotifyDataSetChanged")
         TagsAdapter tagsAdapter = new TagsAdapter(allTags, TAG_ADAPTER_TYPE, (adapterView, view, i, l) -> {
-            //add to this diary list
             thisDiaryTags.add(allTags.get(i));
             if (thisDiaryTagsAdapter == null) {
                 setThisDiaryTagsAdapter();
@@ -137,7 +144,7 @@ public class AddDiaryActivity extends AppCompatActivity {
     }
 
     private void setFonts() {
-        List<String> fonts = UtilityFunctions.getAllFonts(this);
+        List<String> fonts = DataSource.getAllFonts(this);
         FontsAdapter fontsAdapter = new FontsAdapter(fonts, (adapterView, view, i, l) -> {
             fontId = i;
             Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/" + fonts.get(i));
@@ -168,15 +175,7 @@ public class AddDiaryActivity extends AppCompatActivity {
     }
 
     private void setColors() {
-        ArrayList<Color> colorsList = new ArrayList<>();
-        colorsList.add(new Color(1, R.color.color_black));
-        colorsList.add(new Color(2, R.color.color_blue));
-        colorsList.add(new Color(3, R.color.color_brown));
-        colorsList.add(new Color(4, R.color.color_green));
-        colorsList.add(new Color(5, R.color.color_white));
-        colorsList.add(new Color(6, R.color.color_pink));
-        colorsList.add(new Color(7, R.color.color_red));
-        colorsList.add(new Color(8, R.color.color_yellow));
+        List<Color> colorsList = DataSource.getAllColors();
         ColorsAdapter colorsAdapter = new ColorsAdapter(colorsList, (adapterView, view, i, l) -> {
             colorId = i;
             binding.tvDate.setTextColor(getResources().getColor(colorsList.get(i).getColorResId()));
@@ -194,35 +193,29 @@ public class AddDiaryActivity extends AppCompatActivity {
             textDirection = TEXT_DIRECTION_RIGHT;
             binding.etTitle.setGravity(Gravity.END);
             binding.etStory.setGravity(Gravity.END);
-            binding.tvDate.setGravity(Gravity.END);
+            binding.tvDate.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
         });
 
         binding.ivLeftAlign.setOnClickListener(view -> {
             textDirection = TEXT_DIRECTION_LEFT;
             binding.etTitle.setGravity(Gravity.START);
             binding.etStory.setGravity(Gravity.START);
-            binding.tvDate.setGravity(Gravity.START);
+            binding.tvDate.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
         });
 
         binding.ivCenterAlign.setOnClickListener(view -> {
             textDirection = TEXT_DIRECTION_CENTER;
             binding.etTitle.setGravity(Gravity.CENTER);
             binding.etStory.setGravity(Gravity.CENTER);
-            binding.tvDate.setGravity(Gravity.CENTER);
+            binding.tvDate.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         });
     }
 
     private void setBackgrounds() {
-        ArrayList<Mood> moodArrayList = new ArrayList<>();
-        moodArrayList.add(new Mood(R.drawable.bg_1, false));
-        moodArrayList.add(new Mood(R.drawable.bg_2, false));
-        moodArrayList.add(new Mood(R.drawable.bg_3, false));
-        moodArrayList.add(new Mood(R.drawable.bg_4, false));
-        moodArrayList.add(new Mood(R.drawable.bg_5, false));
-        moodArrayList.add(new Mood(R.drawable.bg_6, false));
-        BackgroundsAdapter backgroundsAdapter = new BackgroundsAdapter(moodArrayList, (adapterView, view, i, l) -> {
+        List<Mood> backgrounds = DataSource.getAllBitmaps();
+        BackgroundsAdapter backgroundsAdapter = new BackgroundsAdapter(backgrounds, (adapterView, view, i, l) -> {
             backgroundId = i;
-            binding.getRoot().setBackgroundResource(moodArrayList.get(i).getMoodImage());
+            binding.getRoot().setBackgroundResource(backgrounds.get(i).getMoodImage());
         });
         binding.rvBackgrounds.setLayoutManager(new GridLayoutManager(this, 3));
         binding.rvBackgrounds.setAdapter(backgroundsAdapter);
@@ -322,13 +315,13 @@ public class AddDiaryActivity extends AppCompatActivity {
         binding.rvTags.setAdapter(thisDiaryTagsAdapter);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
     private void saveDiary() {
         Diary diary = new Diary(
                 binding.tvDate.getText().toString(),
                 binding.etTitle.getText().toString(),
                 binding.etStory.getText().toString(),
                 moodAdapter.getSelectedPosition(),
+                diaryCategoryAdapter.getSelectedPosition(),
                 backgroundId,
                 bitmaps,
                 fontId,
@@ -354,6 +347,13 @@ public class AddDiaryActivity extends AppCompatActivity {
         binding.rvMoods.setAdapter(moodAdapter);
     }
 
+    private void setCategories() {
+        List<DiaryCategory> diaryCategories = DataSource.getAllCategories();
+        diaryCategoryAdapter = new DiaryCategoryAdapter(diaryCategories);
+        binding.rvCategory.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        binding.rvCategory.setAdapter(diaryCategoryAdapter);
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -377,7 +377,7 @@ public class AddDiaryActivity extends AppCompatActivity {
             }
             ImagesAdapter imagesAdapter = new ImagesAdapter(bitmaps, (adapterView, view, i, l) -> {
 
-            });
+            }, Constants.IMAGES_ADAPTER_TYPE);
             binding.rvImages.setAdapter(imagesAdapter);
         } else if (resultCode == ImagePicker.RESULT_ERROR) {
             Toast.makeText(this, ImagePicker.getError(data), Toast.LENGTH_SHORT).show();

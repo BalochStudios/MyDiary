@@ -12,13 +12,14 @@ import com.muaz.mydiary.databinding.ItemColorBinding;
 import com.muaz.mydiary.models.Color;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ColorsAdapter extends RecyclerView.Adapter<ColorsAdapter.ColorsHolder> {
 
-    private final ArrayList<Color> colors;
+    private final List<Color> colors;
     private final AdapterView.OnItemClickListener onItemClickListener;
 
-    public ColorsAdapter(ArrayList<Color> colors, AdapterView.OnItemClickListener onItemClickListener) {
+    public ColorsAdapter(List<Color> colors, AdapterView.OnItemClickListener onItemClickListener) {
         this.colors = colors;
         this.onItemClickListener = onItemClickListener;
     }
@@ -42,7 +43,7 @@ public class ColorsAdapter extends RecyclerView.Adapter<ColorsAdapter.ColorsHold
 
     public static class ColorsHolder extends RecyclerView.ViewHolder {
 
-        private ItemColorBinding binding;
+        private final ItemColorBinding binding;
 
         public ColorsHolder(ItemColorBinding binding) {
             super(binding.getRoot());

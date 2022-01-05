@@ -44,6 +44,7 @@
     <string name="text_styling">Text Styling</string>
     <string name="tags">Tags</string>
     <string name="tag_like_fun_family_and_press_enter">Tag like(fun, family) and press enter</string>
+    <string name="social">Social</string>
     <string-array name="Spinner">
         <item>Hellow</item>
         <item>Hellow</item>

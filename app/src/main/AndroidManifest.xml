@@ -12,19 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyDiary">
         <activity
-            android:name=".ui.home.AddDiaryActivity"
-            android:exported="true" >
-        </activity>
+            android:name=".ui.diary.ImagesDisplayActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.diary.AddDiaryActivity"
+            android:exported="true"
+            android:windowSoftInputMode="stateVisible|adjustPan" />
         <activity
             android:name=".ui.lockscreen.LockActivity"
             android:exported="true"
-            android:theme="@style/Theme.MyDiary.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.MyDiary.NoActionBar"></activity>
         <activity android:name=".ui.lockscreen.PasswordSetActivity" />
         <activity android:name=".ui.lockscreen.PasswordActivity" />
         <activity android:name=".ui.lockscreen.PasswordRecoveryActivity" />
         <activity android:name=".ui.lockscreen.PasswordRecoverSetActivity" />
+        <activity android:name=".ui.diary.DiaryDisplayActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

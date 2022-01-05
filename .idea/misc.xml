@@ -10,17 +10,21 @@
         <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/drawable/ic_align_left.xml" value="0.2703125" />
         <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/drawable/ic_align_right.xml" value="0.2703125" />
         <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/drawable/ic_mood.xml" value="0.2703125" />
+        <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/drawable/ic_pet.xml" value="0.2703125" />
         <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/drawable/ic_send.xml" value="0.2703125" />
         <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/drawable/ic_smiling.xml" value="0.2703125" />
         <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/layout/activity_add_in_diary.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/layout/activity_diary_display.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/layout/activity_main.xml" value="0.25025641025641027" />
         <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/layout/activity_password.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/layout/app_bar_main.xml" value="0.25025641025641027" />
         <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/layout/content_main.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/layout/fragment_home.xml" value="0.26711668273866923" />
         <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/layout/item_background.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/layout/item_category_diary.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/layout/item_color.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/layout/item_diary.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/layout/item_diary_display.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/layout/item_emoji.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/layout/item_fonts.xml" value="0.25416666666666665" />
         <entry key="..\:/AndroidApps/MyDiary/app/src/main/res/layout/item_image.xml" value="0.25416666666666665" />

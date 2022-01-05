@@ -11,13 +11,14 @@ import com.muaz.mydiary.databinding.ItemBackgroundBinding;
 import com.muaz.mydiary.models.Mood;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BackgroundsAdapter extends RecyclerView.Adapter<BackgroundsAdapter.BackgroundHolder> {
 
-    private final ArrayList<Mood> bgArrayList;
+    private final List<Mood> bgArrayList;
     private final AdapterView.OnItemClickListener onItemClickListener;
 
-    public BackgroundsAdapter(ArrayList<Mood> bgArrayList, AdapterView.OnItemClickListener onItemClickListener) {
+    public BackgroundsAdapter(List<Mood> bgArrayList, AdapterView.OnItemClickListener onItemClickListener) {
         this.bgArrayList = bgArrayList;
         this.onItemClickListener = onItemClickListener;
     }

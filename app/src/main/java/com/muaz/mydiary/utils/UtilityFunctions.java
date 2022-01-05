@@ -30,16 +30,6 @@ public class UtilityFunctions {
         return new SimpleDateFormat(myFormat, Locale.US);
     }
 
-    public static List<String> getAllFonts(Context context) {
-        List<String> fontsList = new ArrayList<>();
-        try {
-            fontsList = Arrays.asList(context.getAssets().list("fonts"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return fontsList;
-    }
-
     public static void changeColor(ImageView imageView, Context context, int color) {
         imageView.setColorFilter(ContextCompat.getColor(context, color), android.graphics.PorterDuff.Mode.SRC_IN);
     }

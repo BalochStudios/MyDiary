@@ -15,11 +15,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.muaz.mydiary.adapter.DiaryAdapter;
 import com.muaz.mydiary.database.DbHelper;
 import com.muaz.mydiary.databinding.FragmentHomeBinding;
+import com.muaz.mydiary.ui.diary.AddDiaryActivity;
+import com.muaz.mydiary.ui.diary.DiaryDisplayActivity;
 
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
-
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -45,7 +46,8 @@ public class HomeFragment extends Fragment {
     private void setDiaryRV() {
         DbHelper dbHelper = new DbHelper(getContext());
         DiaryAdapter diaryAdapter = new DiaryAdapter(dbHelper.getAllDiaries(), (adapterView, view, i, l) -> {
-
+            Intent intent = new Intent(getContext(), DiaryDisplayActivity.class);
+            startActivity(intent);
         });
         binding.rvDiary.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
         binding.rvDiary.setAdapter(diaryAdapter);

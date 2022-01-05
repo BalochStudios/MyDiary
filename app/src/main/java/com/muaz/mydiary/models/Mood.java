@@ -6,7 +6,6 @@ public class Mood implements Serializable {
 
     private int moodImage;
     private boolean isSelected;
-    //for temporary state
     private boolean selectedEmoji;
 
     public Mood(int moodImage, boolean isSelected) {

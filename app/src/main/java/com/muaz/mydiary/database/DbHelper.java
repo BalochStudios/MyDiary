@@ -7,10 +7,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Bitmap;
+
 import androidx.annotation.Nullable;
+
 import com.muaz.mydiary.models.Diary;
 import com.muaz.mydiary.models.Tag;
 import com.muaz.mydiary.utils.UtilityFunctions;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +33,7 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String KEY_DIARY_DESCRIPTION = "description";
     private static final String KEY_DIARY_BACKGROUND_ID = "backgroundId";
     private static final String KEY_DIARY_MOOD_ID = "moodId";
+    private static final String KEY_DIARY_CATEGORY_ID = "categoryId";
     private static final String KEY_DIARY_FONT_ID = "fontId";
     private static final String KEY_DIARY_TEXT_SIZE = "textSize";
     private static final String KEY_DIARY_TEXT_DIRECTION = "textDirection";
@@ -56,6 +60,7 @@ public class DbHelper extends SQLiteOpenHelper {
             KEY_DIARY_BACKGROUND_ID + " INTEGER," +
             KEY_DIARY_FONT_ID + " TEXT," +
             KEY_DIARY_MOOD_ID + " INTEGER," +
+            KEY_DIARY_CATEGORY_ID + " INTEGER," +
             KEY_DIARY_TEXT_SIZE + " INTEGER," +
             KEY_DIARY_TEXT_DIRECTION + " INTEGER," +
             KEY_DIARY_TEXT_COLOR_ID + " INTEGER," +
@@ -103,6 +108,7 @@ public class DbHelper extends SQLiteOpenHelper {
         cv.put(KEY_DIARY_DESCRIPTION, diary.getDescription());
         cv.put(KEY_DIARY_BACKGROUND_ID, diary.getBackgroundId());
         cv.put(KEY_DIARY_MOOD_ID, diary.getMoodId());
+        cv.put(KEY_DIARY_CATEGORY_ID, diary.getCategoryId());
         cv.put(KEY_DIARY_FONT_ID, diary.getFontId());
         cv.put(KEY_DIARY_TEXT_SIZE, diary.getTextSize());
         cv.put(KEY_DIARY_TEXT_DIRECTION, diary.getTextDirection());
@@ -178,6 +184,7 @@ public class DbHelper extends SQLiteOpenHelper {
             @SuppressLint("Range") String title = cursor.getString(cursor.getColumnIndex(KEY_DIARY_TITLE));
             @SuppressLint("Range") String description = cursor.getString(cursor.getColumnIndex(KEY_DIARY_DESCRIPTION));
             @SuppressLint("Range") int moodId = cursor.getInt(cursor.getColumnIndex(KEY_DIARY_MOOD_ID));
+            @SuppressLint("Range") int categoryId = cursor.getInt(cursor.getColumnIndex(KEY_DIARY_CATEGORY_ID));
             @SuppressLint("Range") int backgroundId = cursor.getInt(cursor.getColumnIndex(KEY_DIARY_BACKGROUND_ID));
             @SuppressLint("Range") int fontId = cursor.getInt(cursor.getColumnIndex(KEY_DIARY_FONT_ID));
             @SuppressLint("Range") int textSize = cursor.getInt(cursor.getColumnIndex(KEY_DIARY_TEXT_SIZE));
@@ -195,6 +202,7 @@ public class DbHelper extends SQLiteOpenHelper {
                     title,
                     description,
                     moodId,
+                    categoryId,
                     backgroundId,
                     bitmapList,
                     fontId,
