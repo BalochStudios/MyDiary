@@ -43,7 +43,6 @@ public class ImagesDisplayActivity extends AppCompatActivity {
         imagesDisplayAdapter = new ImagesDisplayAdapter(bitmapList);
         binding.viewPager.setAdapter(imagesDisplayAdapter);
         new Handler(Looper.getMainLooper()).postDelayed(() -> binding.viewPager.setCurrentItem(bitmapPosition, false), 5);
-
     }
 
 }

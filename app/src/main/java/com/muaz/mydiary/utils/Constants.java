@@ -21,4 +21,6 @@ public class Constants {
     public static final String INTENT_BITMAP_KEY = "bitmaps";
     public static final String INTENT_BITMAP_POSITION_KEY = "bitmapPosition";
 
+    public static final String INTENT_SELECTED_DIARY = "selectedDiary";
+    public static final String INTENT_SELECTED_DIARY_POSITION = "selectedDiaryPosition";
 }

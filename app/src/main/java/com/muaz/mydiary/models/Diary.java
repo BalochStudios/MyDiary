@@ -2,9 +2,10 @@ package com.muaz.mydiary.models;
 
 import android.graphics.Bitmap;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Diary {
+public class Diary implements Serializable {
 
     private Integer id;
     private String date;

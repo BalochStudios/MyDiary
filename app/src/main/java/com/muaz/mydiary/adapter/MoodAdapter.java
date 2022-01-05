@@ -26,6 +26,10 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.MoodHolder> {
         this.selectedPosition = 0;
     }
 
+    public void setSelectedPosition(int selectedPosition) {
+        this.selectedPosition = selectedPosition;
+    }
+
     public int getSelectedPosition() {
         return selectedPosition;
     }
@@ -40,11 +44,19 @@ public class MoodAdapter extends RecyclerView.Adapter<MoodAdapter.MoodHolder> {
     @Override
     public void onBindViewHolder(@NonNull MoodHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.binding.ivEmoji.setImageResource(moodArrayList.get(position).getMoodImage());
+
         if (moodArrayList.get(position).isSelectedEmoji()) {
             holder.itemView.setBackgroundColor(holder.itemView.getContext().getResources().getColor(R.color.black_dim));
         } else {
             holder.itemView.setBackgroundColor(holder.itemView.getContext().getResources().getColor(R.color.null_color));
         }
+
+        if (selectedPosition == position) {
+            holder.itemView.setBackgroundColor(holder.itemView.getContext().getResources().getColor(R.color.black_dim));
+        } else {
+            holder.itemView.setBackgroundColor(holder.itemView.getContext().getResources().getColor(R.color.null_color));
+        }
+
         holder.itemView.setOnClickListener(view -> {
             selectedPosition = position;
             for (int i = 0; i < moodArrayList.size(); i++) {

@@ -14,7 +14,7 @@
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/ivMood"
-        app:layout_constraintEnd_toStartOf="@+id/ivMood"
+        app:layout_constraintEnd_toStartOf="@+id/ivEdit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/ivMood" />
 
@@ -26,6 +26,17 @@
         android:src="@drawable/ic_smiling"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        android:padding="12dp"
+        android:src="@drawable/ic_edit"
+        app:layout_constraintBottom_toBottomOf="@+id/ivMood"
+        app:layout_constraintEnd_toStartOf="@+id/ivMood"
+        app:layout_constraintTop_toTopOf="@+id/ivMood" />
 
     <TextView
         android:id="@+id/tvDiaryCategory"

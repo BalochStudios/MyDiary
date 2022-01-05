@@ -24,6 +24,10 @@ public class DiaryCategoryAdapter extends RecyclerView.Adapter<DiaryCategoryAdap
         this.selectedPosition = 0;
     }
 
+    public void setSelectedPosition(int selectedPosition) {
+        this.selectedPosition = selectedPosition;
+    }
+
     public int getSelectedPosition() {
         return selectedPosition;
     }
@@ -42,6 +46,14 @@ public class DiaryCategoryAdapter extends RecyclerView.Adapter<DiaryCategoryAdap
         Resources resources = holder.itemView.getContext().getResources();
 
         if (diaryCategories.get(position).isSelectedCategory()) {
+            holder.itemView.setBackgroundColor(resources.getColor(R.color.black_dim));
+            holder.binding.tvCategory.setTextColor(resources.getColor(R.color.white));
+        } else {
+            holder.itemView.setBackgroundColor(resources.getColor(R.color.null_color));
+            holder.binding.tvCategory.setTextColor(resources.getColor(R.color.black));
+        }
+
+        if (selectedPosition == position) {
             holder.itemView.setBackgroundColor(resources.getColor(R.color.black_dim));
             holder.binding.tvCategory.setTextColor(resources.getColor(R.color.white));
         } else {

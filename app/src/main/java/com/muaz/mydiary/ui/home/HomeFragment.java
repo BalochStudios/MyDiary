@@ -17,6 +17,7 @@ import com.muaz.mydiary.database.DbHelper;
 import com.muaz.mydiary.databinding.FragmentHomeBinding;
 import com.muaz.mydiary.ui.diary.AddDiaryActivity;
 import com.muaz.mydiary.ui.diary.DiaryDisplayActivity;
+import com.muaz.mydiary.utils.Constants;
 
 public class HomeFragment extends Fragment {
 
@@ -47,6 +48,7 @@ public class HomeFragment extends Fragment {
         DbHelper dbHelper = new DbHelper(getContext());
         DiaryAdapter diaryAdapter = new DiaryAdapter(dbHelper.getAllDiaries(), (adapterView, view, i, l) -> {
             Intent intent = new Intent(getContext(), DiaryDisplayActivity.class);
+            intent.putExtra(Constants.INTENT_SELECTED_DIARY_POSITION, i);
             startActivity(intent);
         });
         binding.rvDiary.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));

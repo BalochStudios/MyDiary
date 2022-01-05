@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyDiary">
         <activity
+            android:name=".ui.diary.EditDiaryActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.diary.ImagesDisplayActivity"
             android:exported="true" />
         <activity
@@ -21,7 +24,7 @@
         <activity
             android:name=".ui.lockscreen.LockActivity"
             android:exported="true"
-            android:theme="@style/Theme.MyDiary.NoActionBar"></activity>
+            android:theme="@style/Theme.MyDiary.NoActionBar" />
         <activity android:name=".ui.lockscreen.PasswordSetActivity" />
         <activity android:name=".ui.lockscreen.PasswordActivity" />
         <activity android:name=".ui.lockscreen.PasswordRecoveryActivity" />
