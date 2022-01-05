@@ -1,4 +1,4 @@
-package com.muaz.mydiary;
+package com.muaz.mydiary.ui.others;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import com.muaz.mydiary.R;
 
 public class WebActivity extends AppCompatActivity {
     private Toolbar toolbar;

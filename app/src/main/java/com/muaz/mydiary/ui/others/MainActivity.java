@@ -1,4 +1,4 @@
-package com.muaz.mydiary;
+package com.muaz.mydiary.ui.others;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +21,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.navigation.NavigationView;
+import com.muaz.mydiary.R;
 import com.muaz.mydiary.databinding.ActivityMainBinding;
 import com.muaz.mydiary.ui.lockscreen.LockActivity;
 

@@ -40,6 +40,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.divyanshu.draw.activity.DrawingActivity;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.slider.Slider;
+import com.google.gson.Gson;
 import com.muaz.mydiary.adapter.BackgroundsAdapter;
 import com.muaz.mydiary.adapter.ColorsAdapter;
 import com.muaz.mydiary.adapter.DiaryCategoryAdapter;
@@ -376,7 +377,10 @@ public class AddDiaryActivity extends AppCompatActivity {
                 }
             }
             ImagesAdapter imagesAdapter = new ImagesAdapter(bitmaps, (adapterView, view, i, l) -> {
-
+                Intent intent = new Intent(AddDiaryActivity.this, ImagesDisplayActivity.class);
+                intent.putExtra(Constants.INTENT_BITMAP_KEY, new Gson().toJson(bitmaps));
+                intent.putExtra(Constants.INTENT_BITMAP_POSITION_KEY, i);
+                startActivity(intent);
             }, Constants.IMAGES_ADAPTER_TYPE);
             binding.rvImages.setAdapter(imagesAdapter);
         } else if (resultCode == ImagePicker.RESULT_ERROR) {

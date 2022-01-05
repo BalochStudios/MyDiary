@@ -1,4 +1,4 @@
-package com.muaz.mydiary;
+package com.muaz.mydiary.ui.others;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.muaz.mydiary.R;
 import com.muaz.mydiary.databinding.ActivityFaqactivityBinding;
 
 public class FAQActivity extends AppCompatActivity {

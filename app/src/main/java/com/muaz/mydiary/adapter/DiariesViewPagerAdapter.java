@@ -1,21 +1,25 @@
 package com.muaz.mydiary.adapter;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
 import com.muaz.mydiary.R;
 import com.muaz.mydiary.databinding.ItemDiaryDisplayBinding;
 import com.muaz.mydiary.models.Color;
 import com.muaz.mydiary.models.Diary;
 import com.muaz.mydiary.models.DiaryCategory;
 import com.muaz.mydiary.models.Mood;
+import com.muaz.mydiary.ui.diary.ImagesDisplayActivity;
 import com.muaz.mydiary.utils.Constants;
 import com.muaz.mydiary.utils.DataSource;
 
@@ -125,6 +129,10 @@ public class DiariesViewPagerAdapter extends RecyclerView.Adapter<DiariesViewPag
             binding.rvTags.setAdapter(tagsAdapter);
             ImagesAdapter imagesAdapter = new ImagesAdapter(diary.getImageList(),
                     (adapterView, view, i, l) -> {
+                        Intent intent = new Intent(view.getContext(), ImagesDisplayActivity.class);
+                        intent.putExtra(Constants.INTENT_BITMAP_KEY, new Gson().toJson(diary.getImageList()));
+                        intent.putExtra(Constants.INTENT_BITMAP_POSITION_KEY, i);
+                        itemView.getContext().startActivity(intent);
                     }, Constants.IMAGES_ADAPTER_BIG_TYPE);
             binding.rvImages.setLayoutManager(new LinearLayoutManager(itemView.getContext(),
                     RecyclerView.HORIZONTAL,

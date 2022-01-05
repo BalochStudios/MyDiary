@@ -1,8 +1,10 @@
-package com.muaz.mydiary;
+package com.muaz.mydiary.ui.others;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.muaz.mydiary.R;
 
 public class TagActivity extends AppCompatActivity {
 

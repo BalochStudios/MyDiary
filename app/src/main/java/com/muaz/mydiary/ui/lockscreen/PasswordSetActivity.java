@@ -1,22 +1,17 @@
 package com.muaz.mydiary.ui.lockscreen;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.muaz.mydiary.MainActivity;
 import com.muaz.mydiary.R;
 import com.muaz.mydiary.databinding.ActivityPasswordSetBinding;
 import com.takwolf.android.lock9.Lock9View;
-
-import info.hoang8f.widget.FButton;
 
 
 public class PasswordSetActivity extends AppCompatActivity {
