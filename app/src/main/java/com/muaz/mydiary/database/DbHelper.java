@@ -123,7 +123,36 @@ public class DbHelper extends SQLiteOpenHelper {
         if (diary.getTagsList().size() > 0)
             addDiaryTags(diary.getTagsList(), diaryId);
         return diaryId;
+    }
 
+    public int updateDiary(Diary diary) {
+
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(KEY_DIARY_DATE, diary.getDate());
+        cv.put(KEY_DIARY_TITLE, diary.getTitle());
+        cv.put(KEY_DIARY_DESCRIPTION, diary.getDescription());
+        cv.put(KEY_DIARY_BACKGROUND_ID, diary.getBackgroundId());
+        cv.put(KEY_DIARY_MOOD_ID, diary.getMoodId());
+        cv.put(KEY_DIARY_CATEGORY_ID, diary.getCategoryId());
+        cv.put(KEY_DIARY_FONT_ID, diary.getFontId());
+        cv.put(KEY_DIARY_TEXT_SIZE, diary.getTextSize());
+        cv.put(KEY_DIARY_TEXT_DIRECTION, diary.getTextDirection());
+        cv.put(KEY_DIARY_TEXT_COLOR_ID, diary.getTextColorId());
+        cv.put(KEY_DIARY_SAVE_TYPE, diary.getSaveType());
+        int res = db.update(TABLE_DIARY, cv, "id=" + diary.getId(), null);
+
+        if (diary.getImageList().size() > 0) {
+            db.delete(TABLE_DIARY_IMAGES, KEY_DIARY_IMAGE_DIARY_ID + "=" + diary.getId(), null);
+            addDiaryImages(diary.getImageList(), diary.getId());
+        }
+
+        if (diary.getTagsList().size() > 0) {
+            db.delete(TABLE_DIARY_TAGS, KEY_TAG_DIARY_ID + "=" + diary.getId(), null);
+            addDiaryTags(diary.getTagsList(), diary.getId());
+        }
+        return res;
     }
 
     @SuppressLint("Range")
@@ -161,6 +190,7 @@ public class DbHelper extends SQLiteOpenHelper {
             db.insert(TABLE_DIARY_IMAGES, null, cv);
         }
     }
+
 
     public int deleteDiary(Diary diary) {
         SQLiteDatabase db = getWritableDatabase();
