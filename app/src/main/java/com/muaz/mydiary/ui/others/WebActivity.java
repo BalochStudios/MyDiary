@@ -11,42 +11,43 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.muaz.mydiary.R;
+import com.muaz.mydiary.databinding.ActivityWebBinding;
 
 public class WebActivity extends AppCompatActivity {
-    private Toolbar toolbar;
-    private WebView webView;
-    private ProgressBar progressBar;
+    ActivityWebBinding activityWebBinding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_web);
-        toolbar = findViewById(R.id.toolBar);
-        webView = findViewById(R.id.webView);
-        progressBar = findViewById(R.id.progressBar);
-        setSupportActionBar(toolbar);
+        activityWebBinding = ActivityWebBinding.inflate(getLayoutInflater());
+        View view=activityWebBinding.getRoot();
+        setContentView(view);
+        setTitle("Lock");
+        setSupportActionBar(activityWebBinding.toolBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        activityWebBinding.toolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 finish();
             }
         });
+
        // webView.getSettings().setJavaScriptEnabled(true);
-        webView.setWebViewClient(new WebViewClient(){
+      activityWebBinding.webView.setWebViewClient(new WebViewClient(){
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
-                progressBar.setVisibility(View.VISIBLE);
+             activityWebBinding.progressBar.setVisibility(View.VISIBLE);
             }
 
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                progressBar.setVisibility(View.GONE);
+             activityWebBinding.progressBar.setVisibility(View.GONE);
             }
         });
         String url=getIntent().getStringExtra("URL");
-        webView.loadUrl(url);
+       activityWebBinding.webView.loadUrl(url);
     }
 }
