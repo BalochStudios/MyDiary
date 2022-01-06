@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+         setNavigationThemee();
 
         binding.navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -133,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         setThemee();
+        setNavigationThemee();
 
 
     }
@@ -159,6 +161,32 @@ public class MainActivity extends AppCompatActivity {
             setTheme(R.style.AppTheme8);
         }else if (value.equals("9")) {
             setTheme(R.style.AppTheme9);
+        } else{
+            setTheme(R.style.AppTheme0);
+        }
+    }
+    public void setNavigationThemee() {
+        value = sharedPreference.getCurrentTheme(MainActivity.this);
+        if (value.equals("0")) {
+            binding.navView.setBackgroundResource(R.drawable.beach);
+        } else if (value.equals("1")) {
+            binding.navView.setBackgroundResource(R.drawable.couple);
+        } else if (value.equals("2")) {
+            binding.navView.setBackgroundResource(R.drawable.flower_bunny);
+        } else if (value.equals("3")) {
+            binding.navView.setBackgroundResource(R.drawable.flowers);
+        }else if (value.equals("4")) {
+            binding.navView.setBackgroundResource(R.drawable.girls);
+        }else if (value.equals("5")) {
+            binding.navView.setBackgroundResource(R.drawable.lovely_bear);
+        }else if (value.equals("6")) {
+            binding.navView.setBackgroundResource(R.drawable.loves);
+        }else if (value.equals("7")) {
+            binding.navView.setBackgroundResource(R.drawable.night);
+        }else if (value.equals("8")) {
+            binding.navView.setBackgroundResource(R.drawable.sunset);
+        }else if (value.equals("9")) {
+            binding.navView.setBackgroundResource(R.drawable.unicorn);
         } else{
             setTheme(R.style.AppTheme0);
         }
