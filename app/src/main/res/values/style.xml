@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#FFFFFFFF</item>
+        <item name="colorPrimaryDark">#FFFFFFFF</item>
+        <item name="colorAccent">#00C853</item>
+        <item name="android:windowBackground">@drawable/beach</item>
+    </style>
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#FFFFFF</item>
+        <item name="colorPrimaryDark">#BEFFFFFF</item>
+        <item name="colorAccent">#00C853</item>
+        <item name="android:windowBackground">@drawable/beach</item>
+
+    </style>
+    <style name="AppTheme0" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#FFFFFF</item>
+        <item name="colorPrimaryDark">#BEFFFFFF</item>
+        <item name="colorAccent">#00C853</item>
+        <item name="android:windowBackground">@drawable/beach</item>
+
+    </style>
+    <style name="AppTheme1" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#FFFFFF</item>
+        <item name="colorPrimaryDark">#BEFFFFFF</item>
+        <item name="colorAccent">#00C853</item>
+        <item name="android:windowBackground">@drawable/couple</item>
+
+    </style>
+    <style name="AppTheme2" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#FFFFFF</item>
+        <item name="colorPrimaryDark">#BEFFFFFF</item>
+        <item name="colorAccent">#00C853</item>
+        <item name="android:windowBackground">@drawable/flower_bunny</item>
+
+    </style>
+    <style name="AppTheme3" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#FFFFFF</item>
+        <item name="colorPrimaryDark">#BEFFFFFF</item>
+        <item name="colorAccent">#00C853</item>
+        <item name="android:windowBackground">@drawable/flowers</item>
+
+    </style>
+    <style name="AppTheme4" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#FFFFFF</item>
+        <item name="colorPrimaryDark">#BEFFFFFF</item>
+        <item name="colorAccent">#00C853</item>
+        <item name="android:windowBackground">@drawable/girls</item>
+
+    </style>
+    <style name="AppTheme5" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#FFFFFF</item>
+        <item name="colorPrimaryDark">#BEFFFFFF</item>
+        <item name="colorAccent">#00C853</item>
+        <item name="android:windowBackground">@drawable/lovely_bear</item>
+
+    </style>
+    <style name="AppTheme6" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#FFFFFF</item>
+        <item name="colorPrimaryDark">#BEFFFFFF</item>
+        <item name="colorAccent">#00C853</item>
+        <item name="android:windowBackground">@drawable/loves</item>
+
+    </style>
+    <style name="AppTheme7" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#FFFFFF</item>
+        <item name="colorPrimaryDark">#BEFFFFFF</item>
+        <item name="colorAccent">#00C853</item>
+        <item name="android:windowBackground">@drawable/night</item>
+
+    </style>
+    <style name="AppTheme8" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#FFFFFF</item>
+        <item name="colorPrimaryDark">#BEFFFFFF</item>
+        <item name="colorAccent">#00C853</item>
+        <item name="android:windowBackground">@drawable/sunset</item>
+
+    </style>
+    <style name="AppTheme9" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#FFFFFF</item>
+        <item name="colorPrimaryDark">#BEFFFFFF</item>
+        <item name="colorAccent">#00C853</item>
+        <item name="android:windowBackground">@drawable/unicorn</item>
+
+    </style>
+    <style name="AppTheme.SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+
+</resources>

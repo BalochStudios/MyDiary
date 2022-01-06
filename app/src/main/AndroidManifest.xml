@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyDiary">
         <activity
+            android:name=".ui.others.ThemeActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
             android:name=".ui.diary.EditDiaryActivity"
             android:exported="true"
             android:windowSoftInputMode="stateVisible|adjustPan" />
@@ -26,14 +29,17 @@
             android:name=".ui.lockscreen.LockActivity"
             android:exported="true"
             android:theme="@style/Theme.MyDiary.NoActionBar" />
-        <activity android:name=".ui.lockscreen.PasswordSetActivity" />
-        <activity android:name=".ui.lockscreen.PasswordActivity" />
-        <activity android:name=".ui.lockscreen.PasswordRecoveryActivity" />
-        <activity android:name=".ui.lockscreen.PasswordRecoverSetActivity" />
+        <activity android:name=".ui.lockscreen.PasswordSetActivity"  android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".ui.lockscreen.PasswordActivity" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ui.lockscreen.PasswordRecoveryActivity" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ui.lockscreen.PasswordRecoverSetActivity" android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.diary.DiaryDisplayActivity" />
-        <activity android:name=".ui.others.FAQActivity" />
-        <activity android:name=".ui.others.SettingsActivity" />
-        <activity android:name=".ui.others.TagActivity" />
+        <activity android:name=".ui.others.FAQActivity" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ui.others.SettingsActivity" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ui.others.TagActivity" android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.others.WebActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.others.MainActivity"
             android:exported="true"
