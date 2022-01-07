@@ -192,9 +192,11 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
 
-    public int deleteDiary(Diary diary) {
+    public void deleteDiary(Diary diary) {
         SQLiteDatabase db = getWritableDatabase();
-        return db.delete(TABLE_DIARY, KEY_DIARY_ID + "=" + diary.getId(), null);
+        db.delete(TABLE_DIARY, KEY_DIARY_ID + "=" + diary.getId(), null);
+        db.delete(TABLE_DIARY_IMAGES, KEY_DIARY_IMAGE_DIARY_ID + "=" + diary.getId(), null);
+        db.delete(TABLE_DIARY_TAGS, KEY_TAG_DIARY_ID + "=" + diary.getId(), null);
     }
 
     public int deleteAllRecord() {

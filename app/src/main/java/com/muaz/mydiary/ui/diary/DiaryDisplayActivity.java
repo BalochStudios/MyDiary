@@ -2,6 +2,7 @@ package com.muaz.mydiary.ui.diary;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -39,13 +40,22 @@ public class DiaryDisplayActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private void initUtils() {
         selectedPosition = getIntent().getIntExtra(Constants.INTENT_SELECTED_DIARY_POSITION, 0);
         dbHelper = new DbHelper(this);
-        List<Diary> diaryList = dbHelper.getAllDiaries();
-        diariesViewPagerAdapter = new DiariesViewPagerAdapter(diaryList);
-        binding.vpDiaries.setAdapter(diariesViewPagerAdapter);
+        setVP();
         new Handler(Looper.getMainLooper()).postDelayed(() -> binding.vpDiaries.setCurrentItem(selectedPosition, false), 5);
 
+    }
+
+    private void setVP() {
+        List<Diary> diaryList = dbHelper.getAllDiaries();
+        if (diaryList.isEmpty()) finish();
+        diariesViewPagerAdapter = new DiariesViewPagerAdapter(diaryList, (adapterView, view, i, l) -> {
+            dbHelper.deleteDiary(diaryList.get(i));
+            setVP();
+        });
+        binding.vpDiaries.setAdapter(diariesViewPagerAdapter);
     }
 }
