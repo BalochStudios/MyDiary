@@ -58,7 +58,7 @@ public class SettingsActivity extends AppCompatActivity {
       activitySettingsBinding.rlTags.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
-              Toast.makeText(SettingsActivity.this, "Tag", Toast.LENGTH_SHORT).show();
+              startActivity(new Intent(SettingsActivity.this,TagActivity.class));
           }
       });
       activitySettingsBinding.rlNotification.setOnClickListener(new View.OnClickListener() {

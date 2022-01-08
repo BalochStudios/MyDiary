@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
                 } else if (id == R.id.actionTheme) {
                     startActivity(new Intent(MainActivity.this,ThemeActivity.class));
                 } else if (id == R.id.actionTag) {
-                    Toast.makeText(MainActivity.this,"Tag Level", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this,TagActivity.class));
                 } else if (id == R.id.actionDiaryLock) {
                     startActivity(new Intent(MainActivity.this, LockActivity.class));
                 } else if (id == R.id.actionBackUpRestore) {
