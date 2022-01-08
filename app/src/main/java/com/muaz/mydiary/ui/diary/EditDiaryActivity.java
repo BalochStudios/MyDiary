@@ -1,6 +1,7 @@
 package com.muaz.mydiary.ui.diary;
 
 import static com.muaz.mydiary.utils.Constants.DEFAULT;
+import static com.muaz.mydiary.utils.Constants.DEFAULT_SLIDER_VALUE;
 import static com.muaz.mydiary.utils.Constants.FONT_SIZE;
 import static com.muaz.mydiary.utils.Constants.SAVE_TYPE_DRAFT;
 import static com.muaz.mydiary.utils.Constants.SAVE_TYPE_SAVED;
@@ -10,13 +11,6 @@ import static com.muaz.mydiary.utils.Constants.TEXT_DIRECTION_CENTER;
 import static com.muaz.mydiary.utils.Constants.TEXT_DIRECTION_LEFT;
 import static com.muaz.mydiary.utils.Constants.TEXT_DIRECTION_RIGHT;
 import static com.muaz.mydiary.utils.UtilityFunctions.makeToast;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -36,6 +30,13 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.divyanshu.draw.activity.DrawingActivity;
 import com.github.dhaval2404.imagepicker.ImagePicker;
@@ -78,6 +79,7 @@ public class EditDiaryActivity extends AppCompatActivity {
     int backgroundId = DEFAULT;
     int fontId = DEFAULT;
     int colorId = DEFAULT;
+    int textSize = DEFAULT_SLIDER_VALUE;
     int textDirection = TEXT_DIRECTION_LEFT;
 
     private TagsAdapter thisDiaryTagsAdapter;
@@ -114,7 +116,15 @@ public class EditDiaryActivity extends AppCompatActivity {
         binding.tvDate.setText(selectedDiary.getDate());
         binding.etTitle.setText(selectedDiary.getTitle());
         binding.etStory.setText(selectedDiary.getDescription());
-
+        bitmaps = selectedDiary.getImageList();
+        setImagesRV();
+        thisDiaryTags = selectedDiary.getTagsList();
+        setThisDiaryTagsAdapter();
+        fontId = selectedDiary.getFontId();
+        backgroundId = selectedDiary.getBackgroundId();
+        colorId = selectedDiary.getTextColorId();
+        textDirection = selectedDiary.getTextDirection();
+        textSize = selectedDiary.getTextSize();
     }
 
     private void setFullScreenFlags() {
@@ -150,7 +160,7 @@ public class EditDiaryActivity extends AppCompatActivity {
                 .setTitle("Do you want to close your feelings?")
                 .setPositiveButton("Save Draft", (dialogInterface, i) -> {
                     saveType = SAVE_TYPE_DRAFT;
-                    saveDiary();
+                    updateDiary();
                 })
                 .setNegativeButton("Delete", (dialogInterface, i) -> finish())
                 .setNeutralButton("Cancel Dialog", (dialogInterface, i) -> dialogInterface.dismiss())
@@ -177,12 +187,14 @@ public class EditDiaryActivity extends AppCompatActivity {
     }
 
     private void setSizeSlider() {
-        binding.etStory.setTextSize(selectedDiary.getTextSize());
-        binding.etTitle.setTextSize(selectedDiary.getTextSize());
-        binding.tvDate.setTextSize(selectedDiary.getTextSize());
+        binding.etStory.setTextSize(FONT_SIZE + selectedDiary.getTextSize());
+        binding.etTitle.setTextSize(FONT_SIZE + selectedDiary.getTextSize());
+        binding.tvDate.setTextSize(FONT_SIZE + selectedDiary.getTextSize());
+        binding.sizeSlider.setValue(selectedDiary.getTextSize());
         binding.sizeSlider.addOnSliderTouchListener(new Slider.OnSliderTouchListener() {
             @Override
             public void onStartTrackingTouch(@NonNull Slider slider) {
+                textSize = (int) slider.getValue();
                 binding.etStory.setTextSize(FONT_SIZE + slider.getValue());
                 binding.etTitle.setTextSize(FONT_SIZE + slider.getValue());
                 binding.tvDate.setTextSize(FONT_SIZE + slider.getValue());
@@ -256,6 +268,7 @@ public class EditDiaryActivity extends AppCompatActivity {
 
     private void setBackgrounds() {
         List<Mood> backgrounds = DataSource.getAllBitmaps();
+        binding.getRoot().setBackgroundResource(backgrounds.get(selectedDiary.getBackgroundId()).getMoodImage());
         BackgroundsAdapter backgroundsAdapter = new BackgroundsAdapter(backgrounds, (adapterView, view, i, l) -> {
             backgroundId = i;
             binding.getRoot().setBackgroundResource(backgrounds.get(i).getMoodImage());
@@ -321,7 +334,7 @@ public class EditDiaryActivity extends AppCompatActivity {
 
         binding.btnSave.setOnClickListener(view -> {
             saveType = SAVE_TYPE_SAVED;
-            saveDiary();
+            updateDiary();
         });
 
         binding.ivTags.setOnClickListener(view -> {
@@ -358,8 +371,9 @@ public class EditDiaryActivity extends AppCompatActivity {
         binding.rvTags.setAdapter(thisDiaryTagsAdapter);
     }
 
-    private void saveDiary() {
+    private void updateDiary() {
         Diary diary = new Diary(
+                selectedDiary.getId(),
                 binding.tvDate.getText().toString(),
                 binding.etTitle.getText().toString(),
                 binding.etStory.getText().toString(),
@@ -368,13 +382,13 @@ public class EditDiaryActivity extends AppCompatActivity {
                 backgroundId,
                 bitmaps,
                 fontId,
-                (int) binding.tvDate.getTextSize(),
+                textSize,
                 textDirection,
                 colorId,
                 thisDiaryTags,
                 saveType
         );
-        long result = dbHelper.addToDiary(diary);
+        int result = dbHelper.updateDiary(diary);
         if (result != -1) {
             makeToast(EditDiaryActivity.this, "Saved Successfully");
             finish();
@@ -407,7 +421,6 @@ public class EditDiaryActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        binding.rvImages.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
         if (resultCode == Activity.RESULT_OK) {
             assert data != null;
             if (requestCode == Constants.REQUEST_CODE_DRAW) {
@@ -424,27 +437,24 @@ public class EditDiaryActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-            ImagesAdapter imagesAdapter = new ImagesAdapter(bitmaps, (adapterView, view, i, l) -> {
-                Intent intent = new Intent(EditDiaryActivity.this, ImagesDisplayActivity.class);
-                intent.putExtra(Constants.INTENT_BITMAP_KEY, new Gson().toJson(bitmaps));
-                intent.putExtra(Constants.INTENT_BITMAP_POSITION_KEY, i);
-                startActivity(intent);
-            }, Constants.IMAGES_ADAPTER_TYPE);
-            binding.rvImages.setAdapter(imagesAdapter);
+            setImagesRV();
         } else if (resultCode == ImagePicker.RESULT_ERROR) {
             Toast.makeText(this, ImagePicker.getError(data), Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "Task Cancelled", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Something went wrong, Kindly try again", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void showCustomUI() {
-        View decorView = getWindow().getDecorView();
-        decorView.setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+    private void setImagesRV() {
+        binding.rvImages.setLayoutManager(new LinearLayoutManager(this, RecyclerView.HORIZONTAL, false));
+        ImagesAdapter imagesAdapter = new ImagesAdapter(bitmaps, (adapterView, view, i, l) -> {
+            Intent intent = new Intent(EditDiaryActivity.this, ImagesDisplayActivity.class);
+            intent.putExtra(Constants.INTENT_BITMAP_KEY, new Gson().toJson(bitmaps));
+            intent.putExtra(Constants.INTENT_BITMAP_POSITION_KEY, i);
+            startActivity(intent);
+        }, Constants.IMAGES_ADAPTER_TYPE);
+        binding.rvImages.setAdapter(imagesAdapter);
     }
-
 
     public void closeKeyboard() {
         View view = this.getCurrentFocus();

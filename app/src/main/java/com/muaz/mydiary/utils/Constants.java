@@ -4,6 +4,7 @@ public class Constants {
 
     public static final int REQUEST_CODE_DRAW = 333;
     public static final int FONT_SIZE = 14;
+    public static final int DEFAULT_SLIDER_VALUE = 0;
     public static final int SAVE_TYPE_DRAFT = 0;
     public static final int DEFAULT = -1;
     public static final int TEXT_DIRECTION_LEFT = 2;

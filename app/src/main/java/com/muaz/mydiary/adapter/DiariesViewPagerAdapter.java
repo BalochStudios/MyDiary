@@ -5,10 +5,14 @@ import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.gson.Gson;
 import com.muaz.mydiary.R;
 import com.muaz.mydiary.databinding.ItemDiaryDisplayBinding;
@@ -20,14 +24,17 @@ import com.muaz.mydiary.ui.diary.EditDiaryActivity;
 import com.muaz.mydiary.ui.diary.ImagesDisplayActivity;
 import com.muaz.mydiary.utils.Constants;
 import com.muaz.mydiary.utils.DataSource;
+
 import java.util.List;
 
 public class DiariesViewPagerAdapter extends RecyclerView.Adapter<DiariesViewPagerAdapter.DiariesVPHolder> {
 
     private final List<Diary> diaryList;
+    private AdapterView.OnItemClickListener onItemClickListener;
 
-    public DiariesViewPagerAdapter(List<Diary> diaryList) {
+    public DiariesViewPagerAdapter(List<Diary> diaryList, AdapterView.OnItemClickListener onItemClickListener) {
         this.diaryList = diaryList;
+        this.onItemClickListener = onItemClickListener;
     }
 
     @NonNull
@@ -140,6 +147,10 @@ public class DiariesViewPagerAdapter extends RecyclerView.Adapter<DiariesViewPag
                 Intent intent = new Intent(view.getContext(), EditDiaryActivity.class);
                 intent.putExtra(Constants.INTENT_SELECTED_DIARY, new Gson().toJson(diaryList.get(position)));
                 itemView.getContext().startActivity(intent);
+            });
+
+            binding.ivDelete.setOnClickListener(view -> {
+                onItemClickListener.onItemClick(null, binding.ivDelete, position, 0);
             });
         }
     }

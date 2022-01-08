@@ -1,6 +1,7 @@
 package com.muaz.mydiary.ui.diary;
 
 import static com.muaz.mydiary.utils.Constants.DEFAULT;
+import static com.muaz.mydiary.utils.Constants.DEFAULT_SLIDER_VALUE;
 import static com.muaz.mydiary.utils.Constants.FONT_SIZE;
 import static com.muaz.mydiary.utils.Constants.SAVE_TYPE_DRAFT;
 import static com.muaz.mydiary.utils.Constants.SAVE_TYPE_SAVED;
@@ -23,6 +24,7 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
@@ -76,6 +78,7 @@ public class AddDiaryActivity extends AppCompatActivity {
     int backgroundId = DEFAULT;
     int fontId = DEFAULT;
     int colorId = DEFAULT;
+    int textSize = DEFAULT_SLIDER_VALUE;
     int textDirection = TEXT_DIRECTION_LEFT;
 
     private TagsAdapter thisDiaryTagsAdapter;
@@ -113,11 +116,26 @@ public class AddDiaryActivity extends AppCompatActivity {
         allTags = dbHelper.getAllTags();
         @SuppressLint("NotifyDataSetChanged")
         TagsAdapter tagsAdapter = new TagsAdapter(allTags, TAG_ADAPTER_TYPE, (adapterView, view, i, l) -> {
-            thisDiaryTags.add(allTags.get(i));
-            if (thisDiaryTagsAdapter == null) {
-                setThisDiaryTagsAdapter();
+            if (thisDiaryTags.size() > 0) {
+                for (Tag tag : thisDiaryTags) {
+                    if (allTags.get(i).getTag().equals(tag.getTag())) {
+                        makeToast(this, "Already Exists");
+                    } else {
+                        thisDiaryTags.add(allTags.get(i));
+                        if (thisDiaryTagsAdapter == null) {
+                            setThisDiaryTagsAdapter();
+                        } else {
+                            thisDiaryTagsAdapter.notifyDataSetChanged();
+                        }
+                    }
+                }
             } else {
-                thisDiaryTagsAdapter.notifyDataSetChanged();
+                thisDiaryTags.add(allTags.get(i));
+                if (thisDiaryTagsAdapter == null) {
+                    setThisDiaryTagsAdapter();
+                } else {
+                    thisDiaryTagsAdapter.notifyDataSetChanged();
+                }
             }
         }, (adapterView, view, i, l) -> {
             //ignore this
@@ -161,6 +179,8 @@ public class AddDiaryActivity extends AppCompatActivity {
         binding.sizeSlider.addOnSliderTouchListener(new Slider.OnSliderTouchListener() {
             @Override
             public void onStartTrackingTouch(@NonNull Slider slider) {
+
+                textSize = (int) slider.getValue();
                 binding.etStory.setTextSize(FONT_SIZE + slider.getValue());
                 binding.etTitle.setTextSize(FONT_SIZE + slider.getValue());
                 binding.tvDate.setTextSize(FONT_SIZE + slider.getValue());
@@ -297,9 +317,22 @@ public class AddDiaryActivity extends AppCompatActivity {
         binding.ivSend.setOnClickListener(view -> {
             closeKeyboard();
             String tag = Objects.requireNonNull(binding.etTag.getText()).toString().replace(" ", "");
-            thisDiaryTags.add(new Tag(tag));
-            binding.etTag.setText("");
-            setThisDiaryTagsAdapter();
+            if (thisDiaryTags.size() > 0) {
+                for (Tag tag1 : thisDiaryTags) {
+                    if (tag1.getTag().equals(tag)) {
+                        makeToast(this, "Already exists");
+                        binding.etTag.setText("");
+                    } else {
+                        thisDiaryTags.add(new Tag(tag));
+                        binding.etTag.setText("");
+                        setThisDiaryTagsAdapter();
+                    }
+                }
+            } else {
+                thisDiaryTags.add(new Tag(tag));
+                binding.etTag.setText("");
+                setThisDiaryTagsAdapter();
+            }
         });
     }
 
@@ -326,7 +359,7 @@ public class AddDiaryActivity extends AppCompatActivity {
                 backgroundId,
                 bitmaps,
                 fontId,
-                (int) binding.tvDate.getTextSize(),
+                textSize,
                 textDirection,
                 colorId,
                 thisDiaryTags,
@@ -386,7 +419,7 @@ public class AddDiaryActivity extends AppCompatActivity {
         } else if (resultCode == ImagePicker.RESULT_ERROR) {
             Toast.makeText(this, ImagePicker.getError(data), Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "Task Cancelled", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Task Cancelled", Toast.LENGTH_SHORT).show();
         }
     }
 

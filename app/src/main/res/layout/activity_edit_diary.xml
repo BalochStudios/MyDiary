@@ -33,7 +33,7 @@
             android:id="@+id/btnSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/save"
+            android:text="@string/update"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,6 +45,7 @@
             android:contentDescription="@string/app_name"
             android:padding="8dp"
             android:src="@drawable/ic_preview"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/btnSave"
             app:layout_constraintEnd_toStartOf="@+id/btnSave"
             app:layout_constraintTop_toTopOf="@+id/btnSave" />
@@ -57,6 +58,7 @@
             android:contentDescription="@string/app_name"
             android:padding="8dp"
             android:src="@drawable/ic_eye_protector"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/btnSave"
             app:layout_constraintEnd_toStartOf="@+id/ivPreview"
             app:layout_constraintTop_toTopOf="@+id/btnSave" />

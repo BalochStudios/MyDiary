@@ -2,6 +2,7 @@ package com.muaz.mydiary.adapter;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 
@@ -74,5 +75,6 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryHolder>
                     onItemClickListener.onItemClick(null, itemView, position, 0));
 
         }
+
     }
 }
