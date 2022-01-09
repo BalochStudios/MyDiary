@@ -1,5 +1,6 @@
 package com.muaz.mydiary.ui.others;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -7,6 +8,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,10 +23,31 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import com.ajts.androidmads.library.SQLiteToExcel;
 import com.google.android.material.navigation.NavigationView;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
 import com.muaz.mydiary.R;
+import com.muaz.mydiary.database.DbHelper;
 import com.muaz.mydiary.databinding.ActivityMainBinding;
+import com.muaz.mydiary.models.Diary;
 import com.muaz.mydiary.ui.lockscreen.LockActivity;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,20 +55,25 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     SharedPreference sharedPreference;
     public String value;
+    private DbHelper dbHelper;
+    private ArrayList<Diary> diariesList;
+    private Diary diary;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        sharedPreference=new SharedPreference();
+        sharedPreference = new SharedPreference();
         setThemee();
         if (Build.VERSION.SDK_INT > 21) {
             getWindow().setStatusBarColor(Color.parseColor("#00000000"));
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
         }
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        dbHelper = new DbHelper(MainActivity.this);
+        diariesList = new ArrayList<>();
 
         setSupportActionBar(binding.appBarMain.toolbar);
         DrawerLayout drawer = binding.drawerLayout;
@@ -58,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-         setNavigationThemee();
+        setNavigationThemee();
 
         binding.navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -76,15 +104,38 @@ public class MainActivity extends AppCompatActivity {
                     });
                     builder.show();
                 } else if (id == R.id.actionTheme) {
-                    startActivity(new Intent(MainActivity.this,ThemeActivity.class));
+                    startActivity(new Intent(MainActivity.this, ThemeActivity.class));
                 } else if (id == R.id.actionTag) {
-                    startActivity(new Intent(MainActivity.this,TagActivity.class));
+                    startActivity(new Intent(MainActivity.this, TagActivity.class));
                 } else if (id == R.id.actionDiaryLock) {
                     startActivity(new Intent(MainActivity.this, LockActivity.class));
                 } else if (id == R.id.actionBackUpRestore) {
-                    Toast.makeText(MainActivity.this,"BackUp Level", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "BackUp Level", Toast.LENGTH_SHORT).show();
                 } else if (id == R.id.actionExport) {
-                    Toast.makeText(MainActivity.this,"Export Level", Toast.LENGTH_SHORT).show();
+
+                    Dexter.withContext(MainActivity.this)
+                            .withPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                            .withListener(new PermissionListener() {
+                                @Override
+                                public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+                                    ExportData();
+                                }
+
+                                @Override
+                                public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+                                    Toast.makeText(MainActivity.this, "Permission permanently denied", Toast.LENGTH_SHORT).show();
+
+                                }
+
+                                @Override
+                                public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                                    permissionToken.continuePermissionRequest();
+
+                                }
+                            })
+                            .check();
+
+
                 } else if (id == R.id.actionDonate) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                     builder.setTitle("Donate SomeThing");
@@ -108,10 +159,10 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(storeIntent);
                     Toast.makeText(MainActivity.this, "MoreApps", Toast.LENGTH_SHORT).show();
                 } else if (id == R.id.actionFAQ) {
-                    startActivity(new Intent(MainActivity.this,FAQActivity.class));
+                    startActivity(new Intent(MainActivity.this, FAQActivity.class));
 
                 } else if (id == R.id.actionSetting) {
-                    startActivity(new Intent(MainActivity.this,SettingsActivity.class));
+                    startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                 }
                 return true;
             }
@@ -130,6 +181,7 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -149,22 +201,23 @@ public class MainActivity extends AppCompatActivity {
             setTheme(R.style.AppTheme2);
         } else if (value.equals("3")) {
             setTheme(R.style.AppTheme3);
-        }else if (value.equals("4")) {
+        } else if (value.equals("4")) {
             setTheme(R.style.AppTheme4);
-        }else if (value.equals("5")) {
+        } else if (value.equals("5")) {
             setTheme(R.style.AppTheme5);
-        }else if (value.equals("6")) {
+        } else if (value.equals("6")) {
             setTheme(R.style.AppTheme6);
-        }else if (value.equals("7")) {
+        } else if (value.equals("7")) {
             setTheme(R.style.AppTheme7);
-        }else if (value.equals("8")) {
+        } else if (value.equals("8")) {
             setTheme(R.style.AppTheme8);
-        }else if (value.equals("9")) {
+        } else if (value.equals("9")) {
             setTheme(R.style.AppTheme9);
-        } else{
+        } else {
             setTheme(R.style.AppTheme0);
         }
     }
+
     public void setNavigationThemee() {
         value = sharedPreference.getCurrentTheme(MainActivity.this);
         if (value.equals("0")) {
@@ -175,20 +228,45 @@ public class MainActivity extends AppCompatActivity {
             binding.navView.setBackgroundResource(R.drawable.flower_bunny);
         } else if (value.equals("3")) {
             binding.navView.setBackgroundResource(R.drawable.flowers);
-        }else if (value.equals("4")) {
+        } else if (value.equals("4")) {
             binding.navView.setBackgroundResource(R.drawable.girls);
-        }else if (value.equals("5")) {
+        } else if (value.equals("5")) {
             binding.navView.setBackgroundResource(R.drawable.lovely_bear);
-        }else if (value.equals("6")) {
+        } else if (value.equals("6")) {
             binding.navView.setBackgroundResource(R.drawable.loves);
-        }else if (value.equals("7")) {
+        } else if (value.equals("7")) {
             binding.navView.setBackgroundResource(R.drawable.night);
-        }else if (value.equals("8")) {
+        } else if (value.equals("8")) {
             binding.navView.setBackgroundResource(R.drawable.sunset);
-        }else if (value.equals("9")) {
+        } else if (value.equals("9")) {
             binding.navView.setBackgroundResource(R.drawable.unicorn);
-        } else{
+        } else {
             setTheme(R.style.AppTheme0);
         }
+    }
+
+    public void ExportData() {
+        diariesList = dbHelper.getAllDiaries();
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss",
+                Locale.getDefault()).format(System.currentTimeMillis());
+        try {
+            File path = Environment.getExternalStorageDirectory();
+            File dir = new File(path + "/My Files/");
+            dir.mkdir();
+            String fileName = "MyFiles" + timeStamp + ".txt";
+            File file = new File(dir, fileName);
+            FileWriter fileWriter = new FileWriter(file.getAbsoluteFile());
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+            bufferedWriter.write("Hellow");
+            bufferedWriter.close();
+            Toast.makeText(MainActivity.this, fileName + "is save to \n" + dir, Toast.LENGTH_SHORT).show();
+
+        } catch (Exception e) {
+            Toast.makeText(MainActivity.this, "Some issue ", Toast.LENGTH_SHORT).show();
+
+        }
+
+
     }
 }
