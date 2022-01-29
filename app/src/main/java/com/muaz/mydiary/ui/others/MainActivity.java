@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
@@ -88,22 +89,12 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
         setNavigationThemee();
 
+
         binding.navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                if (id == R.id.actionPro) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                    builder.setTitle("Upgrade to Pro");
-                    builder.setMessage("Sorry at this time, Pro Level of App is not Available for You");
-                    builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-
-                        }
-                    });
-                    builder.show();
-                } else if (id == R.id.actionTheme) {
+                 if (id == R.id.actionTheme) {
                     startActivity(new Intent(MainActivity.this, ThemeActivity.class));
                 } else if (id == R.id.actionTag) {
                     startActivity(new Intent(MainActivity.this, TagActivity.class));
@@ -136,18 +127,7 @@ public class MainActivity extends AppCompatActivity {
                             .check();
 
 
-                } else if (id == R.id.actionDonate) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                    builder.setTitle("Donate SomeThing");
-                    builder.setMessage("Sorry at this time, Pro Level of App is not Available for You .So you can't Donate anythings to other's");
-                    builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-
-                        }
-                    });
-                    builder.show();
-                } else if (id == R.id.actionShare) {
+                }else if (id == R.id.actionShare) {
                     ShareCompat.IntentBuilder intentBuilder = ShareCompat.IntentBuilder.from(MainActivity.this);
                     intentBuilder.setType("text/plain");
                     intentBuilder.setText("Hi This is amazing App: https://play.google.com/store/apps/details?id=" + getPackageName());
@@ -221,27 +201,50 @@ public class MainActivity extends AppCompatActivity {
     public void setNavigationThemee() {
         value = sharedPreference.getCurrentTheme(MainActivity.this);
         if (value.equals("0")) {
-            binding.navView.setBackgroundResource(R.drawable.beach);
+            binding.navView.setBackgroundResource(R.color.beach);
+            binding.navView.setItemTextColor(ColorStateList.valueOf(getResources().getColor(R.color.white)));
+            binding.navView.setItemIconTintList(ColorStateList.valueOf(getResources().getColor(R.color.white)));
         } else if (value.equals("1")) {
-            binding.navView.setBackgroundResource(R.drawable.couple);
+            binding.navView.setItemTextColor(ColorStateList.valueOf(getResources().getColor(R.color.color_blue)));
+            binding.navView.setItemIconTintList(ColorStateList.valueOf(getResources().getColor(R.color.color_blue)));
+            binding.navView.setBackgroundResource(R.color.couple);
         } else if (value.equals("2")) {
-            binding.navView.setBackgroundResource(R.drawable.flower_bunny);
+            binding.navView.setBackgroundResource(R.color.flower_bunny);
+            binding.navView.setItemTextColor(ColorStateList.valueOf(getResources().getColor(R.color.white)));
+            binding.navView.setItemIconTintList(ColorStateList.valueOf(getResources().getColor(R.color.white)));
         } else if (value.equals("3")) {
-            binding.navView.setBackgroundResource(R.drawable.flowers);
+            binding.navView.setBackgroundResource(R.color.flowers);
+            binding.navView.setItemTextColor(ColorStateList.valueOf(getResources().getColor(R.color.color_blue)));
+            binding.navView.setItemIconTintList(ColorStateList.valueOf(getResources().getColor(R.color.color_blue)));
         } else if (value.equals("4")) {
-            binding.navView.setBackgroundResource(R.drawable.girls);
+            binding.navView.setBackgroundResource(R.color.girls);
+            binding.navView.setItemTextColor(ColorStateList.valueOf(getResources().getColor(R.color.black)));
+            binding.navView.setItemIconTintList(ColorStateList.valueOf(getResources().getColor(R.color.black)));
+
         } else if (value.equals("5")) {
-            binding.navView.setBackgroundResource(R.drawable.lovely_bear);
+            binding.navView.setBackgroundResource(R.color.lovely_bear);
+            binding.navView.setItemTextColor(ColorStateList.valueOf(getResources().getColor(R.color.color_blue)));
+            binding.navView.setItemIconTintList(ColorStateList.valueOf(getResources().getColor(R.color.color_blue)));
         } else if (value.equals("6")) {
-            binding.navView.setBackgroundResource(R.drawable.loves);
+            binding.navView.setBackgroundResource(R.color.loves);
+            binding.navView.setItemTextColor(ColorStateList.valueOf(getResources().getColor(R.color.black)));
+            binding.navView.setItemIconTintList(ColorStateList.valueOf(getResources().getColor(R.color.black)));
         } else if (value.equals("7")) {
-            binding.navView.setBackgroundResource(R.drawable.night);
+            binding.navView.setBackgroundResource(R.color.night);
+            binding.navView.setItemTextColor(ColorStateList.valueOf(getResources().getColor(R.color.white)));
+            binding.navView.setItemIconTintList(ColorStateList.valueOf(getResources().getColor(R.color.white)));
         } else if (value.equals("8")) {
-            binding.navView.setBackgroundResource(R.drawable.sunset);
+            binding.navView.setBackgroundResource(R.color.sunset);
+            binding.navView.setItemTextColor(ColorStateList.valueOf(getResources().getColor(R.color.white)));
+            binding.navView.setItemIconTintList(ColorStateList.valueOf(getResources().getColor(R.color.white)));
         } else if (value.equals("9")) {
-            binding.navView.setBackgroundResource(R.drawable.unicorn);
+            binding.navView.setBackgroundResource(R.color.unicorn);
+            binding.navView.setItemTextColor(ColorStateList.valueOf(getResources().getColor(R.color.black)));
+            binding.navView.setItemIconTintList(ColorStateList.valueOf(getResources().getColor(R.color.black)));
         } else {
             setTheme(R.style.AppTheme0);
+            binding.navView.setItemTextColor(ColorStateList.valueOf(getResources().getColor(R.color.black)));
+            binding.navView.setItemIconTintList(ColorStateList.valueOf(getResources().getColor(R.color.black)));
         }
     }
 
@@ -257,9 +260,14 @@ public class MainActivity extends AppCompatActivity {
             File file = new File(dir, fileName);
             FileWriter fileWriter = new FileWriter(file.getAbsoluteFile());
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            for (int i = 0; i < diariesList.size(); i++) {
+                Diary diary = diariesList.get(i);
+                bufferedWriter.write(diary.getDate()+"\n"+diary.getTitle()+"\n"+diary.getDescription()+"\n --------------------"+"\n");
+            }
 
-            bufferedWriter.write("Hellow");
             bufferedWriter.close();
+
+
             Toast.makeText(MainActivity.this, fileName + "is save to \n" + dir, Toast.LENGTH_SHORT).show();
 
         } catch (Exception e) {

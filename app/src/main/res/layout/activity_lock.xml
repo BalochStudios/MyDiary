@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/llLockActivity"
     tools:context=".ui.lockscreen.LockActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -61,7 +62,6 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="4dp"
                 android:buttonTint="@color/white"
-                android:checked="true"
                 tools:ignore="UseSwitchCompatOrMaterialXml" />
         </RelativeLayout>
 
@@ -126,30 +126,7 @@
                     android:textSize="14sp" />
             </LinearLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp">
 
-                <TextView
-                    android:id="@+id/tvFingerPrint"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-condensed-medium"
-                    android:text="Enable FingerPrint"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18sp" />
-
-                <Switch
-                    android:id="@+id/swFingerPrint"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="4dp"
-                    android:checked="false"
-                    tools:ignore="UseSwitchCompatOrMaterialXml" />
-            </RelativeLayout>
         </LinearLayout>
 
     </LinearLayout>

@@ -2,49 +2,46 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-    <group android:id="@+id/grp1" android:checkableBehavior="single">
+    <group
+        android:id="@+id/grp1"
+        android:checkableBehavior="single">
 
 
-        <item
-            android:id="@+id/actionPro"
-
-            android:title="Upgrade to PRO" />
         <item
             android:id="@+id/actionTheme"
-
-            android:title="Theme"
-            />
+            android:icon="@drawable/theme"
+            android:title="Theme" />
     </group>
-    <group android:id="@+id/grp2" android:checkableBehavior="single">
+    <group
+        android:id="@+id/grp2"
+        android:checkableBehavior="single">
 
         <item
             android:id="@+id/actionTag"
             android:icon="@drawable/tags"
-            android:title="Tags"/>
+            android:title="Tags" />
         <item
             android:id="@+id/actionDiaryLock"
             android:icon="@drawable/lock"
             android:title="Diary Lock" />
         <item
             android:id="@+id/actionBackUpRestore"
-            android:icon="@drawable/share"
+            android:icon="@drawable/ic_baseline_backup_24"
             android:title="BackUp &amp; Restore" />
         <item
             android:id="@+id/actionExport"
-            android:icon="@drawable/share"
+            android:icon="@drawable/export"
             android:title="Export" />
 
     </group>
-    <group android:id="@+id/grp3" android:checkableBehavior="single" >
-        <item
-            android:id="@+id/actionDonate"
-            android:icon="@drawable/donate"
-            android:title="Donate"
-            />
+    <group
+        android:id="@+id/grp3"
+        android:checkableBehavior="single">
+
         <item
             android:id="@+id/actionShare"
             android:icon="@drawable/share"
-            android:title="Share App"/>
+            android:title="Share App" />
         <item
             android:id="@+id/actionMoreApps"
             android:icon="@drawable/more_apps"

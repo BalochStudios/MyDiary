@@ -24,6 +24,7 @@ import com.muaz.mydiary.databinding.ActivityLockBinding;
 import com.muaz.mydiary.databinding.ActivityLockInfoBinding;
 import com.muaz.mydiary.ui.others.FAQActivity;
 import com.muaz.mydiary.ui.others.SharedPreference;
+import com.muaz.mydiary.ui.others.TagActivity;
 
 
 import java.util.zip.Inflater;
@@ -37,7 +38,7 @@ public class LockActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPreference=new SharedPreference();
-        setThemee();
+
         if (Build.VERSION.SDK_INT > 21) {
             getWindow().setStatusBarColor(Color.parseColor("#00000000"));
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
@@ -63,7 +64,6 @@ public class LockActivity extends AppCompatActivity {
                     activityLockBinding.tvSetPasscode.setTextColor(getResources().getColor(R.color.defaultwhite));
                     activityLockBinding.tvLockQuestion.setTextColor(getResources().getColor(R.color.white));
                     activityLockBinding.tvSetLockQuestion.setTextColor(getResources().getColor(R.color.defaultwhite));
-                    activityLockBinding.tvFingerPrint.setTextColor(getResources().getColor(R.color.white));
                     activityLockBinding.llSetPasscode.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -85,7 +85,6 @@ public class LockActivity extends AppCompatActivity {
                     activityLockBinding.tvSetPasscode.setTextColor(getResources().getColor(R.color.dimwhite));
                     activityLockBinding.tvLockQuestion.setTextColor(getResources().getColor(R.color.dimwhite));
                     activityLockBinding.tvSetLockQuestion.setTextColor(getResources().getColor(R.color.dimwhite));
-                    activityLockBinding.tvFingerPrint.setTextColor(getResources().getColor(R.color.dimwhite));
                     activityLockBinding.llSetPasscode.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
@@ -123,35 +122,35 @@ public class LockActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        setThemee();
+        setNavigationThemee();
 
 
     }
-
-    public void setThemee() {
+    public void setNavigationThemee() {
         value = sharedPreference.getCurrentTheme(LockActivity.this);
         if (value.equals("0")) {
-            setTheme(R.style.AppTheme0);
+           activityLockBinding.llLockActivity.setBackgroundResource(R.color.beach);
         } else if (value.equals("1")) {
-            setTheme(R.style.AppTheme1);
+            activityLockBinding.llLockActivity.setBackgroundResource(R.color.couple);
         } else if (value.equals("2")) {
-            setTheme(R.style.AppTheme2);
+            activityLockBinding.llLockActivity.setBackgroundResource(R.color.flower_bunny);
         } else if (value.equals("3")) {
-            setTheme(R.style.AppTheme3);
-        }else if (value.equals("4")) {
-            setTheme(R.style.AppTheme4);
-        }else if (value.equals("5")) {
-            setTheme(R.style.AppTheme5);
-        }else if (value.equals("6")) {
-            setTheme(R.style.AppTheme6);
-        }else if (value.equals("7")) {
-            setTheme(R.style.AppTheme7);
-        }else if (value.equals("8")) {
-            setTheme(R.style.AppTheme8);
-        }else if (value.equals("9")) {
-            setTheme(R.style.AppTheme9);
-        } else{
-            setTheme(R.style.AppTheme0);
+            activityLockBinding.llLockActivity.setBackgroundResource(R.color.flowers);
+        } else if (value.equals("4")) {
+            activityLockBinding.llLockActivity.setBackgroundResource(R.color.girls);
+        } else if (value.equals("5")) {
+            activityLockBinding.llLockActivity.setBackgroundResource(R.color.lovely_bear);
+        } else if (value.equals("6")) {
+            activityLockBinding.llLockActivity.setBackgroundResource(R.color.loves);
+        } else if (value.equals("7")) {
+            activityLockBinding.llLockActivity.setBackgroundResource(R.color.night);
+        } else if (value.equals("8")) {
+            activityLockBinding.llLockActivity.setBackgroundResource(R.color.sunset);
+        } else if (value.equals("9")) {
+            activityLockBinding.llLockActivity.setBackgroundResource(R.color.unicorn);
+        } else {
+            activityLockBinding.llLockActivity.setBackgroundResource(R.color.beach);
+
         }
     }
 }

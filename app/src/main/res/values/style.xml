@@ -19,15 +19,16 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#FFFFFF</item>
         <item name="colorPrimaryDark">#BEFFFFFF</item>
-        <item name="colorAccent">#00C853</item>
+        <item name="colorAccent">@color/white</item>
         <item name="android:windowBackground">@drawable/beach</item>
+
 
     </style>
     <style name="AppTheme1" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#FFFFFF</item>
         <item name="colorPrimaryDark">#BEFFFFFF</item>
-        <item name="colorAccent">#880E4F</item>
+        <item name="colorAccent">@color/color_blue</item>
         <item name="android:windowBackground">@drawable/couple</item>
 
     </style>
@@ -35,7 +36,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#FFFFFF</item>
         <item name="colorPrimaryDark">#BEFFFFFF</item>
-        <item name="colorAccent">#00C853</item>
+        <item name="colorAccent">@color/white</item>
         <item name="android:windowBackground">@drawable/flower_bunny</item>
 
     </style>
@@ -43,7 +44,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#FFFFFF</item>
         <item name="colorPrimaryDark">#BEFFFFFF</item>
-        <item name="colorAccent">#00C853</item>
+        <item name="colorAccent">@color/color_blue</item>
         <item name="android:windowBackground">@drawable/flowers</item>
 
     </style>
@@ -51,7 +52,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#FFFFFF</item>
         <item name="colorPrimaryDark">#BEFFFFFF</item>
-        <item name="colorAccent">#00C853</item>
+        <item name="colorAccent">@color/black</item>
         <item name="android:windowBackground">@drawable/girls</item>
 
     </style>
@@ -59,7 +60,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#FFFFFF</item>
         <item name="colorPrimaryDark">#BEFFFFFF</item>
-        <item name="colorAccent">#00C853</item>
+        <item name="colorAccent">@color/color_blue</item>
         <item name="android:windowBackground">@drawable/lovely_bear</item>
 
     </style>
@@ -67,7 +68,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#FFFFFF</item>
         <item name="colorPrimaryDark">#BEFFFFFF</item>
-        <item name="colorAccent">#00C853</item>
+        <item name="colorAccent">@color/black</item>
         <item name="android:windowBackground">@drawable/loves</item>
 
     </style>
@@ -75,7 +76,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#FFFFFF</item>
         <item name="colorPrimaryDark">#BEFFFFFF</item>
-        <item name="colorAccent">#00C853</item>
+        <item name="colorAccent">@color/white</item>
         <item name="android:windowBackground">@drawable/night</item>
 
     </style>
@@ -83,7 +84,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#FFFFFF</item>
         <item name="colorPrimaryDark">#BEFFFFFF</item>
-        <item name="colorAccent">#00C853</item>
+        <item name="colorAccent">@color/white</item>
         <item name="android:windowBackground">@drawable/sunset</item>
 
     </style>
@@ -91,7 +92,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#FFFFFF</item>
         <item name="colorPrimaryDark">#BEFFFFFF</item>
-        <item name="colorAccent">#00C853</item>
+        <item name="colorAccent">@color/black</item>
         <item name="android:windowBackground">@drawable/unicorn</item>
 
     </style>

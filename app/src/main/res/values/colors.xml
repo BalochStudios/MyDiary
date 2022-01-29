@@ -13,4 +13,14 @@
     <color name="defaultwhite">#BEFFFFFF</color>
     <color name="themebooster">#c0392b</color>
     <color name="screen_bg">#DFDEDE</color>
+    <color name="beach">#85C9ED</color>
+    <color name="couple">#F18A8E</color>
+    <color name="flower_bunny">#79CEDA</color>
+    <color name="flowers">#FAC4D4</color>
+    <color name="girls">#90EF89</color>
+    <color name="lovely_bear">#FAD9DF</color>
+    <color name="loves">#76C7EA</color>
+    <color name="night">#03419F</color>
+    <color name="sunset">#ECBB44</color>
+    <color name="unicorn">#EFBBEF</color>
 </resources>

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.muaz.mydiary.R;
 import com.muaz.mydiary.databinding.ActivitySettingsBinding;
 import com.muaz.mydiary.ui.lockscreen.LockActivity;
@@ -24,7 +25,7 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPreference=new SharedPreference();
-        setThemee();
+        //setThemee();
         if (Build.VERSION.SDK_INT > 21) {
             getWindow().setStatusBarColor(Color.parseColor("#00000000"));
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
@@ -41,64 +42,21 @@ public class SettingsActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-      activitySettingsBinding.rlModeStyle.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-              Toast.makeText(SettingsActivity.this, "Mode", Toast.LENGTH_SHORT).show();
-          }
-      });
-      activitySettingsBinding.rlStickerMall.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-              Toast.makeText(SettingsActivity.this, "Sticker", Toast.LENGTH_SHORT).show();
-
-          }
-      });
       activitySettingsBinding.rlTags.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
               startActivity(new Intent(SettingsActivity.this,TagActivity.class));
           }
       });
-      activitySettingsBinding.rlNotification.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-              Toast.makeText(SettingsActivity.this, "Notification", Toast.LENGTH_SHORT).show();
-          }
-      });
+
       activitySettingsBinding.rlDiaryLock.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View view) {
               startActivity(new Intent(SettingsActivity.this, LockActivity.class));
           }
       });
-      activitySettingsBinding.rlDayOfWeek.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-              Toast.makeText(SettingsActivity.this, "Day Of Week", Toast.LENGTH_SHORT).show();
-          }
-      });
-      activitySettingsBinding.rlDateFormat.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-              Toast.makeText(SettingsActivity.this, "Date format", Toast.LENGTH_SHORT).show();
-          }
-      });
-      activitySettingsBinding.rlTimeFormat.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-              Toast.makeText(SettingsActivity.this, "Time Format", Toast.LENGTH_SHORT).show();
-          }
-      });
-      activitySettingsBinding.rlSkipMode.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View view) {
-              Toast.makeText(SettingsActivity.this, "Skip Mode", Toast.LENGTH_SHORT).show();
-          }
-      });
+  
 
-      
         activitySettingsBinding.rlRateUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -141,22 +99,18 @@ public class SettingsActivity extends AppCompatActivity {
 
             }
         });
-        activitySettingsBinding.rlLanguage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(SettingsActivity.this, "Language section", Toast.LENGTH_SHORT).show();
-            }
-        });
+
     }
     @Override
     protected void onResume() {
         super.onResume();
-        setThemee();
+        setNavigationThemee();
+       // setThemee();
 
 
     }
 
-    public void setThemee() {
+/*    public void setThemee() {
         value = sharedPreference.getCurrentTheme(SettingsActivity.this);
         if (value.equals("0")) {
             setTheme(R.style.AppTheme0);
@@ -180,6 +134,34 @@ public class SettingsActivity extends AppCompatActivity {
             setTheme(R.style.AppTheme9);
         } else{
             setTheme(R.style.AppTheme0);
+        }
+    }*/
+    public void setNavigationThemee() {
+        value = sharedPreference.getCurrentTheme(SettingsActivity.this);
+        if (value.equals("0")) {
+           activitySettingsBinding.llSettingLayout.setBackgroundResource(R.color.beach);
+
+        } else if (value.equals("1")) {
+            activitySettingsBinding.llSettingLayout.setBackgroundResource(R.color.couple);
+        } else if (value.equals("2")) {
+            activitySettingsBinding.llSettingLayout.setBackgroundResource(R.color.flower_bunny);
+        } else if (value.equals("3")) {
+            activitySettingsBinding.llSettingLayout.setBackgroundResource(R.color.flowers);
+        } else if (value.equals("4")) {
+            activitySettingsBinding.llSettingLayout.setBackgroundResource(R.color.girls);
+        } else if (value.equals("5")) {
+            activitySettingsBinding.llSettingLayout.setBackgroundResource(R.color.lovely_bear);
+        } else if (value.equals("6")) {
+            activitySettingsBinding.llSettingLayout.setBackgroundResource(R.color.loves);
+        } else if (value.equals("7")) {
+            activitySettingsBinding.llSettingLayout.setBackgroundResource(R.color.night);
+        } else if (value.equals("8")) {
+            activitySettingsBinding.llSettingLayout.setBackgroundResource(R.color.sunset);
+        } else if (value.equals("9")) {
+            activitySettingsBinding.llSettingLayout.setBackgroundResource(R.color.unicorn);
+        } else {
+            activitySettingsBinding.llSettingLayout.setBackgroundResource(R.color.beach);
+
         }
     }
 

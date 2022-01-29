@@ -44,6 +44,7 @@ dependencies {
     implementation 'com.ms-square:expandableTextView:0.1.4'
     implementation 'com.ajts.androidmads.SQLite2Excel:library:1.0.4'
     implementation 'com.karumi:dexter:6.2.3'
+    implementation 'com.afollestad.material-dialogs:commons:0.9.2.3'
 
     implementation 'com.github.dhaval2404:imagepicker:2.1'
     implementation 'com.github.divyanshub024:AndroidDraw:v0.1'

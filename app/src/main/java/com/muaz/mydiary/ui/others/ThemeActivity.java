@@ -1,6 +1,7 @@
 package com.muaz.mydiary.ui.others;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -32,7 +33,10 @@ public class ThemeActivity extends AppCompatActivity {
             int position=   activityThemeBinding.viewPage.getCurrentItem();
                Toast.makeText(ThemeActivity.this, "position"+position, Toast.LENGTH_SHORT).show();
                sharedPreference.setCurrentTheme(ThemeActivity.this, String.valueOf(position));
-               finish();
+
+               Intent intent = new Intent(ThemeActivity.this, MainActivity.class);
+               startActivity(intent);
+               finishAffinity();
 
            }
        });

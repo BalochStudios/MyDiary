@@ -22,6 +22,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -43,6 +44,7 @@ import com.divyanshu.draw.activity.DrawingActivity;
 import com.github.dhaval2404.imagepicker.ImagePicker;
 import com.google.android.material.slider.Slider;
 import com.google.gson.Gson;
+import com.muaz.mydiary.R;
 import com.muaz.mydiary.adapter.BackgroundsAdapter;
 import com.muaz.mydiary.adapter.ColorsAdapter;
 import com.muaz.mydiary.adapter.DiaryCategoryAdapter;
@@ -57,6 +59,8 @@ import com.muaz.mydiary.models.Diary;
 import com.muaz.mydiary.models.DiaryCategory;
 import com.muaz.mydiary.models.Mood;
 import com.muaz.mydiary.models.Tag;
+import com.muaz.mydiary.ui.others.MainActivity;
+import com.muaz.mydiary.ui.others.SharedPreference;
 import com.muaz.mydiary.utils.Constants;
 import com.muaz.mydiary.utils.DataSource;
 import com.muaz.mydiary.utils.UtilityFunctions;
@@ -86,10 +90,18 @@ public class AddDiaryActivity extends AppCompatActivity {
     private DiaryCategoryAdapter diaryCategoryAdapter;
 
     DbHelper dbHelper;
+    SharedPreference sharedPreference;
+    public String value;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sharedPreference = new SharedPreference();
+        setThemee();
+        if (Build.VERSION.SDK_INT > 21) {
+            getWindow().setStatusBarColor(android.graphics.Color.parseColor("#00000000"));
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+        }
         binding = ActivityAddInDiaryBinding.inflate(getLayoutInflater());
         setFullScreenFlags();
         setContentView(binding.getRoot());
@@ -436,6 +448,39 @@ public class AddDiaryActivity extends AppCompatActivity {
         if (view != null) {
             InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setThemee();
+
+
+    }
+    public void setThemee() {
+        value = sharedPreference.getCurrentTheme(AddDiaryActivity.this);
+        if (value.equals("0")) {
+            setTheme(R.style.AppTheme0);
+        } else if (value.equals("1")) {
+            setTheme(R.style.AppTheme1);
+        } else if (value.equals("2")) {
+            setTheme(R.style.AppTheme2);
+        } else if (value.equals("3")) {
+            setTheme(R.style.AppTheme3);
+        } else if (value.equals("4")) {
+            setTheme(R.style.AppTheme4);
+        } else if (value.equals("5")) {
+            setTheme(R.style.AppTheme5);
+        } else if (value.equals("6")) {
+            setTheme(R.style.AppTheme6);
+        } else if (value.equals("7")) {
+            setTheme(R.style.AppTheme7);
+        } else if (value.equals("8")) {
+            setTheme(R.style.AppTheme8);
+        } else if (value.equals("9")) {
+            setTheme(R.style.AppTheme9);
+        } else {
+            setTheme(R.style.AppTheme0);
         }
     }
 }

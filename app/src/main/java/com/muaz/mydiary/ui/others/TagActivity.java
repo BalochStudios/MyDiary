@@ -38,7 +38,7 @@ public class TagActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sharedPreference=new SharedPreference();
-        setThemee();
+
         if (Build.VERSION.SDK_INT > 21) {
             getWindow().setStatusBarColor(Color.parseColor("#00000000"));
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN|View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
@@ -61,13 +61,13 @@ public class TagActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        setThemee();
+        setNavigationThemee();
         setAllTags();
 
 
     }
 
-    public void setThemee() {
+ /*   public void setThemee() {
         value = sharedPreference.getCurrentTheme(TagActivity.this);
         if (value.equals("0")) {
             setTheme(R.style.AppTheme0);
@@ -92,7 +92,7 @@ public class TagActivity extends AppCompatActivity {
         } else{
             setTheme(R.style.AppTheme0);
         }
-    }
+    }*/
     private void setAllTags() {
         allTags = dbHelper.getAllTags();
         @SuppressLint("NotifyDataSetChanged")
@@ -107,5 +107,32 @@ public class TagActivity extends AppCompatActivity {
         });
        activityTagBinding.rvAlreadyTags.setLayoutManager(new LinearLayoutManager(this));
        activityTagBinding.rvAlreadyTags.setAdapter(tagsAdapterClass);
+    }
+    public void setNavigationThemee() {
+        value = sharedPreference.getCurrentTheme(TagActivity.this);
+        if (value.equals("0")) {
+            activityTagBinding.llTagLayout.setBackgroundResource(R.color.beach);
+        } else if (value.equals("1")) {
+            activityTagBinding.llTagLayout.setBackgroundResource(R.color.couple);
+        } else if (value.equals("2")) {
+            activityTagBinding.llTagLayout.setBackgroundResource(R.color.flower_bunny);
+        } else if (value.equals("3")) {
+            activityTagBinding.llTagLayout.setBackgroundResource(R.color.flowers);
+        } else if (value.equals("4")) {
+            activityTagBinding.llTagLayout.setBackgroundResource(R.color.girls);
+        } else if (value.equals("5")) {
+            activityTagBinding.llTagLayout.setBackgroundResource(R.color.lovely_bear);
+        } else if (value.equals("6")) {
+            activityTagBinding.llTagLayout.setBackgroundResource(R.color.loves);
+        } else if (value.equals("7")) {
+            activityTagBinding.llTagLayout.setBackgroundResource(R.color.night);
+        } else if (value.equals("8")) {
+            activityTagBinding.llTagLayout.setBackgroundResource(R.color.sunset);
+        } else if (value.equals("9")) {
+            activityTagBinding.llTagLayout.setBackgroundResource(R.color.unicorn);
+        } else {
+            activityTagBinding.llTagLayout.setBackgroundResource(R.color.beach);
+
+        }
     }
 }
