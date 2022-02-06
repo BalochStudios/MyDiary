@@ -41,6 +41,10 @@ public class DataSource {
         backgrounds.add(new Mood(R.drawable.bg_4, false));
         backgrounds.add(new Mood(R.drawable.bg_5, false));
         backgrounds.add(new Mood(R.drawable.bg_6, false));
+        backgrounds.add(new Mood(R.drawable.bg_7, false));
+        backgrounds.add(new Mood(R.drawable.bg_8, false));
+        backgrounds.add(new Mood(R.drawable.bg_9, false));
+        backgrounds.add(new Mood(R.drawable.bg_10, false));
         return backgrounds;
     }
 

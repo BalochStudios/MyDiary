@@ -16,10 +16,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.muaz.mydiary.R;
 import com.muaz.mydiary.databinding.ActivityPasswordBinding;
 import com.muaz.mydiary.ui.others.FAQActivity;
+import com.muaz.mydiary.ui.others.MainActivity;
 import com.muaz.mydiary.ui.others.SharedPreference;
 import com.takwolf.android.lock9.Lock9View;
 
-
+import me.aflak.libraries.callback.FingerprintDialogCallback;
+import me.aflak.libraries.dialog.DialogAnimation;
+import me.aflak.libraries.dialog.FingerprintDialog;
 
 
 public class PasswordActivity extends AppCompatActivity {
@@ -56,7 +59,7 @@ public class PasswordActivity extends AppCompatActivity {
 
                 if (sharedPreferences.getString(AppLockConstants.PASSWORD, "").matches(password)) {
 
-                    Intent i = new Intent(PasswordActivity.this, LockActivity.class);
+                    Intent i = new Intent(PasswordActivity.this, MainActivity.class);
                     startActivity(i);
                     finish();
                     AppLockLogEvents.logEvents(AppLockConstants.PASSWORD_CHECK_SCREEN, "Correct Password", "correct_password", "");
@@ -68,8 +71,35 @@ public class PasswordActivity extends AppCompatActivity {
                 }
             }
         });
+      activityPasswordBinding.btnFingerPrint.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View view) {
+              FingerprintDialog.initialize(PasswordActivity.this)
+                      .title(R.string.fingerprint_title)
+                      .message(R.string.fingerprint_message)
+                      .enterAnimation(DialogAnimation.Enter.RIGHT)
+                      .exitAnimation(DialogAnimation.Exit.RIGHT)
+                      .circleScanningColor(R.color.colorAccent)
+                      .callback(new FingerprintDialogCallback() {
+                          @Override
+                          public void onAuthenticationSucceeded() {
+                              Intent i = new Intent(PasswordActivity.this, MainActivity.class);
+                              startActivity(i);
 
-      activityPasswordBinding.forgetPassword.setOnClickListener(new View.OnClickListener() {
+                          }
+
+                          @Override
+                          public void onAuthenticationCancel() {
+
+
+                          }
+                      })
+                      .show();
+
+          }
+      });
+
+      activityPasswordBinding.btnForgetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(PasswordActivity.this, PasswordRecoveryActivity.class);

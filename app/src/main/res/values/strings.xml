@@ -46,6 +46,8 @@
     <string name="tag_like_fun_family_and_press_enter">Tag like(fun, family) and press enter</string>
     <string name="social">Social</string>
     <string name="update">Update</string>
+    <string name="fingerprint_title">Identification</string>
+    <string name="fingerprint_message">Please scan your finger</string>
     <string-array name="Spinner">
         <item>Hellow</item>
         <item>Hellow</item>
@@ -54,4 +56,5 @@
         <item>Hellow</item>
         <item>Hellow</item>
     </string-array>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.lockscreen.FingerPirntActivity">
+    <me.aflak.libraries.view.Fingerprint
+        android:id="@+id/fingerprint"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerInParent="true"
+        />
+ <!--   <ImageView
+        android:id="@+id/ivFingerprint"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/fingerprint"
+        app:tint="#ff0000"
+        />
+
+    <TextView
+        android:id="@+id/tvFingerprintText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Place your finger to scan"
+        android:layout_below="@id/ivFingerprint"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="8dp"
+        android:textSize="24sp"
+        />
+
+    <Button
+        android:id="@+id/btnPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Use Password"
+        android:background="@android:color/transparent"
+        android:textColor="@color/colorAccent"
+        android:layout_below="@id/tvFingerprintText"
+        android:layout_alignParentRight="true" />-->
+
+
+</RelativeLayout>

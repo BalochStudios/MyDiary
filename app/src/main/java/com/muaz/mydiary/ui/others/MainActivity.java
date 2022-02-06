@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
                 } else if (id == R.id.actionDiaryLock) {
                     startActivity(new Intent(MainActivity.this, LockActivity.class));
                 } else if (id == R.id.actionBackUpRestore) {
-                    Toast.makeText(MainActivity.this, "BackUp Level", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this,BackUpAndRestore.class));
                 } else if (id == R.id.actionExport) {
 
                     Dexter.withContext(MainActivity.this)
@@ -134,17 +134,21 @@ public class MainActivity extends AppCompatActivity {
                     intentBuilder.setSubject(getString(R.string.app_name));
                     startActivity(intentBuilder.getIntent());
                 } else if (id == R.id.actionMoreApps) {
-                    String storeULR = "https://play.google.com/store/search?q=Audio Editor & Voice Recorder";
+                    String storeULR = "https://play.google.com/store/search?q=my%20diary";
                     Intent storeIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(storeULR));
                     startActivity(storeIntent);
                     Toast.makeText(MainActivity.this, "MoreApps", Toast.LENGTH_SHORT).show();
                 } else if (id == R.id.actionFAQ) {
                     startActivity(new Intent(MainActivity.this, FAQActivity.class));
 
+
                 } else if (id == R.id.actionSetting) {
                     startActivity(new Intent(MainActivity.this, SettingsActivity.class));
                 }
+
                 return true;
+
+
             }
         });
     }
@@ -167,6 +171,8 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         setThemee();
         setNavigationThemee();
+        binding.drawerLayout.close();
+
 
 
     }
@@ -205,8 +211,8 @@ public class MainActivity extends AppCompatActivity {
             binding.navView.setItemTextColor(ColorStateList.valueOf(getResources().getColor(R.color.white)));
             binding.navView.setItemIconTintList(ColorStateList.valueOf(getResources().getColor(R.color.white)));
         } else if (value.equals("1")) {
-            binding.navView.setItemTextColor(ColorStateList.valueOf(getResources().getColor(R.color.color_blue)));
-            binding.navView.setItemIconTintList(ColorStateList.valueOf(getResources().getColor(R.color.color_blue)));
+            binding.navView.setItemTextColor(ColorStateList.valueOf(getResources().getColor(R.color.loves)));
+            binding.navView.setItemIconTintList(ColorStateList.valueOf(getResources().getColor(R.color.loves)));
             binding.navView.setBackgroundResource(R.color.couple);
         } else if (value.equals("2")) {
             binding.navView.setBackgroundResource(R.color.flower_bunny);
@@ -214,8 +220,8 @@ public class MainActivity extends AppCompatActivity {
             binding.navView.setItemIconTintList(ColorStateList.valueOf(getResources().getColor(R.color.white)));
         } else if (value.equals("3")) {
             binding.navView.setBackgroundResource(R.color.flowers);
-            binding.navView.setItemTextColor(ColorStateList.valueOf(getResources().getColor(R.color.color_blue)));
-            binding.navView.setItemIconTintList(ColorStateList.valueOf(getResources().getColor(R.color.color_blue)));
+            binding.navView.setItemTextColor(ColorStateList.valueOf(getResources().getColor(R.color.loves)));
+            binding.navView.setItemIconTintList(ColorStateList.valueOf(getResources().getColor(R.color.loves)));
         } else if (value.equals("4")) {
             binding.navView.setBackgroundResource(R.color.girls);
             binding.navView.setItemTextColor(ColorStateList.valueOf(getResources().getColor(R.color.black)));
@@ -223,8 +229,8 @@ public class MainActivity extends AppCompatActivity {
 
         } else if (value.equals("5")) {
             binding.navView.setBackgroundResource(R.color.lovely_bear);
-            binding.navView.setItemTextColor(ColorStateList.valueOf(getResources().getColor(R.color.color_blue)));
-            binding.navView.setItemIconTintList(ColorStateList.valueOf(getResources().getColor(R.color.color_blue)));
+            binding.navView.setItemTextColor(ColorStateList.valueOf(getResources().getColor(R.color.loves)));
+            binding.navView.setItemIconTintList(ColorStateList.valueOf(getResources().getColor(R.color.loves)));
         } else if (value.equals("6")) {
             binding.navView.setBackgroundResource(R.color.loves);
             binding.navView.setItemTextColor(ColorStateList.valueOf(getResources().getColor(R.color.black)));
@@ -242,7 +248,7 @@ public class MainActivity extends AppCompatActivity {
             binding.navView.setItemTextColor(ColorStateList.valueOf(getResources().getColor(R.color.black)));
             binding.navView.setItemIconTintList(ColorStateList.valueOf(getResources().getColor(R.color.black)));
         } else {
-            setTheme(R.style.AppTheme0);
+            binding.navView.setBackgroundResource(R.color.beach);
             binding.navView.setItemTextColor(ColorStateList.valueOf(getResources().getColor(R.color.black)));
             binding.navView.setItemIconTintList(ColorStateList.valueOf(getResources().getColor(R.color.black)));
         }
@@ -260,17 +266,21 @@ public class MainActivity extends AppCompatActivity {
             File file = new File(dir, fileName);
             FileWriter fileWriter = new FileWriter(file.getAbsoluteFile());
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-            for (int i = 0; i < diariesList.size(); i++) {
-                Diary diary = diariesList.get(i);
-                bufferedWriter.write(diary.getDate()+"\n"+diary.getTitle()+"\n"+diary.getDescription()+"\n --------------------"+"\n");
+            if (diariesList.size() == 0) {
+                Toast.makeText(MainActivity.this, "No Diary Found", Toast.LENGTH_SHORT).show();
+            } else {
+                for (int i = 0; i < diariesList.size(); i++) {
+                    Diary diary = diariesList.get(i);
+                    bufferedWriter.write(diary.getDate() + "\n" + diary.getTitle() + "\n" + diary.getDescription() + "\n --------------------" + "\n");
+                }
+
+                bufferedWriter.close();
+
+
+                Toast.makeText(MainActivity.this, fileName + "is save to \n" + dir, Toast.LENGTH_LONG).show();
+
             }
-
-            bufferedWriter.close();
-
-
-            Toast.makeText(MainActivity.this, fileName + "is save to \n" + dir, Toast.LENGTH_SHORT).show();
-
-        } catch (Exception e) {
+        }catch (Exception e) {
             Toast.makeText(MainActivity.this, "Some issue ", Toast.LENGTH_SHORT).show();
 
         }

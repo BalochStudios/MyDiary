@@ -96,6 +96,7 @@
         <item name="android:windowBackground">@drawable/unicorn</item>
 
     </style>
+
     <style name="AppTheme.SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>

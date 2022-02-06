@@ -2,12 +2,14 @@ package com.muaz.mydiary.ui.lockscreen;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.hardware.biometrics.BiometricManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
@@ -25,9 +27,14 @@ import com.muaz.mydiary.databinding.ActivityLockInfoBinding;
 import com.muaz.mydiary.ui.others.FAQActivity;
 import com.muaz.mydiary.ui.others.SharedPreference;
 import com.muaz.mydiary.ui.others.TagActivity;
+import com.muaz.mydiary.ui.others.ThemeActivity;
 
 
 import java.util.zip.Inflater;
+
+import me.aflak.libraries.callback.FingerprintDialogCallback;
+import me.aflak.libraries.dialog.DialogAnimation;
+import me.aflak.libraries.dialog.FingerprintDialog;
 
 public class LockActivity extends AppCompatActivity {
     ActivityLockBinding activityLockBinding;
@@ -60,6 +67,8 @@ public class LockActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
                 if (activityLockBinding.swDiaryLock.isChecked() == true) {
+                    boolean first=true;
+                    sharedPreference.setCurrentUser(LockActivity.this, String.valueOf(first));
                     activityLockBinding.tvPasscode.setTextColor(getResources().getColor(R.color.white));
                     activityLockBinding.tvSetPasscode.setTextColor(getResources().getColor(R.color.defaultwhite));
                     activityLockBinding.tvLockQuestion.setTextColor(getResources().getColor(R.color.white));
@@ -80,7 +89,7 @@ public class LockActivity extends AppCompatActivity {
                         }
                     });
 
-                } else  {
+                } else if(activityLockBinding.swDiaryLock.isChecked()==false)  {
                     activityLockBinding.tvPasscode.setTextColor(getResources().getColor(R.color.dimwhite));
                     activityLockBinding.tvSetPasscode.setTextColor(getResources().getColor(R.color.dimwhite));
                     activityLockBinding.tvLockQuestion.setTextColor(getResources().getColor(R.color.dimwhite));

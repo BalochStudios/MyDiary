@@ -25,6 +25,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -161,16 +162,16 @@ public class AddDiaryActivity extends AppCompatActivity {
     public void onBackPressed() {
         showProperExitDialog();
     }
-
+    //Your entry is not saved yet. Do you want to save draft?
     private void showProperExitDialog() {
         new AlertDialog.Builder(this)
-                .setTitle("Do you want to close your feelings?")
-                .setPositiveButton("Save Draft", (dialogInterface, i) -> {
+                .setTitle("Your entry is not saved yet. Do you want to save draft?")
+                .setPositiveButton(Html.fromHtml("<font color='#FF1AEA'>Save Draft</font>"), (dialogInterface, i) -> {
                     saveType = SAVE_TYPE_DRAFT;
                     saveDiary();
                 })
-                .setNegativeButton("Delete", (dialogInterface, i) -> finish())
-                .setNeutralButton("Cancel Dialog", (dialogInterface, i) -> dialogInterface.dismiss())
+                .setNegativeButton(Html.fromHtml("<font color='#FF0000'>Delete</font>"), (dialogInterface, i) -> finish())
+                //.setNeutralButton("Cancel Dialog", (dialogInterface, i) -> dialogInterface.dismiss())
                 .show();
     }
 

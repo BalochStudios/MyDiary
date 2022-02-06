@@ -33,11 +33,7 @@
         android:padding="24dp"
         tools:context=".ui.others.SettingsActivity">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Customize"
-            android:textSize="14sp" />
+
 
 
 

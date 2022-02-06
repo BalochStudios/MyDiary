@@ -7,14 +7,17 @@
         <entry key="..\:/Android Project Folder/MyDiaary/app/src/main/res/drawable/export.xml" value="0.19907407407407407" />
         <entry key="..\:/Android Project Folder/MyDiaary/app/src/main/res/drawable/theme.xml" value="0.1962962962962963" />
         <entry key="..\:/Android Project Folder/MyDiaary/app/src/main/res/layout/activity_add_in_diary.xml" value="0.12962962962962962" />
+        <entry key="..\:/Android Project Folder/MyDiaary/app/src/main/res/layout/activity_back_up_and_restore.xml" value="0.20416666666666666" />
         <entry key="..\:/Android Project Folder/MyDiaary/app/src/main/res/layout/activity_diary_display.xml" value="0.20416666666666666" />
         <entry key="..\:/Android Project Folder/MyDiaary/app/src/main/res/layout/activity_edit_diary.xml" value="0.1712962962962963" />
         <entry key="..\:/Android Project Folder/MyDiaary/app/src/main/res/layout/activity_faqactivity.xml" value="0.1712962962962963" />
+        <entry key="..\:/Android Project Folder/MyDiaary/app/src/main/res/layout/activity_finger_pirnt.xml" value="0.20416666666666666" />
         <entry key="..\:/Android Project Folder/MyDiaary/app/src/main/res/layout/activity_images_display.xml" value="0.20416666666666666" />
         <entry key="..\:/Android Project Folder/MyDiaary/app/src/main/res/layout/activity_lock.xml" value="0.1712962962962963" />
-        <entry key="..\:/Android Project Folder/MyDiaary/app/src/main/res/layout/activity_main.xml" value="0.13703703703703704" />
+        <entry key="..\:/Android Project Folder/MyDiaary/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Android Project Folder/MyDiaary/app/src/main/res/layout/activity_password.xml" value="0.1712962962962963" />
         <entry key="..\:/Android Project Folder/MyDiaary/app/src/main/res/layout/activity_settings.xml" value="0.12962962962962962" />
+        <entry key="..\:/Android Project Folder/MyDiaary/app/src/main/res/layout/activity_splash.xml" value="0.1675925925925926" />
         <entry key="..\:/Android Project Folder/MyDiaary/app/src/main/res/layout/activity_tag.xml" value="0.1712962962962963" />
         <entry key="..\:/Android Project Folder/MyDiaary/app/src/main/res/layout/nav_header_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Android Project Folder/MyDiaary/app/src/main/res/menu/activity_main_drawer.xml" value="0.20102564102564102" />

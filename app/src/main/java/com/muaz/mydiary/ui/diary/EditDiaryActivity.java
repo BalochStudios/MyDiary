@@ -268,7 +268,10 @@ public class EditDiaryActivity extends AppCompatActivity {
 
     private void setBackgrounds() {
         List<Mood> backgrounds = DataSource.getAllBitmaps();
+        if(selectedDiary.getBackgroundId() != -1){
         binding.getRoot().setBackgroundResource(backgrounds.get(selectedDiary.getBackgroundId()).getMoodImage());
+
+        }
         BackgroundsAdapter backgroundsAdapter = new BackgroundsAdapter(backgrounds, (adapterView, view, i, l) -> {
             backgroundId = i;
             binding.getRoot().setBackgroundResource(backgrounds.get(i).getMoodImage());

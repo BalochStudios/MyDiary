@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.muaz.mydiary">
+    package="com.muaz.mydiary" >
 
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the "MyLocation" functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -11,7 +18,40 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyDiary">
+        android:theme="@style/Theme.MyDiary" >
+
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".MapsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_maps" />
+        <activity
+            android:name=".ui.others.SplashActivity"
+            android:exported="true"
+            android:theme="@style/AppTheme.SplashTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.lockscreen.FingerPirntActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.others.BackUpAndRestore"
+            android:exported="false" />
         <activity
             android:name=".ui.others.ThemeActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -30,14 +70,28 @@
             android:name=".ui.lockscreen.LockActivity"
             android:exported="true"
             android:theme="@style/Theme.MyDiary.NoActionBar" />
-        <activity android:name=".ui.lockscreen.PasswordSetActivity"  android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".ui.lockscreen.PasswordActivity" android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.lockscreen.PasswordRecoveryActivity" android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.lockscreen.PasswordRecoverSetActivity" android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.lockscreen.PasswordSetActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.lockscreen.PasswordActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.lockscreen.PasswordRecoveryActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.lockscreen.PasswordRecoverSetActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.diary.DiaryDisplayActivity" />
-        <activity android:name=".ui.others.FAQActivity" android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.others.SettingsActivity" android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.others.TagActivity" android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.others.FAQActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.others.SettingsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.others.TagActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.others.WebActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -45,12 +99,7 @@
             android:name=".ui.others.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.MyDiary.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:theme="@style/Theme.MyDiary.NoActionBar" >
         </activity>
     </application>
 
