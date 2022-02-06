@@ -15,16 +15,37 @@ import com.muaz.mydiary.models.Mood;
 import com.muaz.mydiary.utils.Constants;
 import com.muaz.mydiary.utils.DataSource;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.DiaryHolder> {
 
     private final List<Diary> diaryList;
+    private final List<Diary> backUpDiaryList;
     private AdapterView.OnItemClickListener onItemClickListener;
+    private String query;
 
     public DiaryAdapter(List<Diary> diaryList, AdapterView.OnItemClickListener onItemClickListener) {
         this.diaryList = diaryList;
         this.onItemClickListener = onItemClickListener;
+        this.backUpDiaryList = new ArrayList<>(diaryList);
+    }
+    public void filter(String query) {
+        this.query=query;
+        diaryList.clear();
+        if(query.isEmpty()) {
+            diaryList.addAll(backUpDiaryList);
+        } else {
+            for (int i=0;i<backUpDiaryList.size(); i++){
+                Diary obj = backUpDiaryList.get(i);
+                if (obj.getTitle().toLowerCase().startsWith(query) ||obj.getDescription().toLowerCase().startsWith(query)) {
+                    diaryList.add(obj);
+                }
+
+            }
+        }
+        notifyDataSetChanged();
+
     }
 
     @NonNull

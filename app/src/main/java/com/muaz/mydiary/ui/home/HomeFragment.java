@@ -4,11 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,6 +31,7 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     SharedPreference sharedPreference;
     public String value;
+    DiaryAdapter diaryAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -64,12 +68,13 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         binding.ivAddNewDiary.setOnClickListener(view1 -> startActivity(new Intent(getContext(), AddDiaryActivity.class)));
+        setHasOptionsMenu(true);
         setDiaryRV();
     }
 
     private void setDiaryRV() {
         DbHelper dbHelper = new DbHelper(getContext());
-        DiaryAdapter diaryAdapter = new DiaryAdapter(dbHelper.getAllDiaries(), (adapterView, view, i, l) -> {
+         diaryAdapter = new DiaryAdapter(dbHelper.getAllDiaries(), (adapterView, view, i, l) -> {
             Intent intent = new Intent(getContext(), DiaryDisplayActivity.class);
             intent.putExtra(Constants.INTENT_SELECTED_DIARY_POSITION, i);
             startActivity(intent);
@@ -108,5 +113,24 @@ public class HomeFragment extends Fragment {
         } else {
         }
         getContext().setTheme(R.style.AppTheme3);
+    }
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.main, menu);
+        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                diaryAdapter.filter(newText);
+                return false;
+            }
+        });
+
+        super.onCreateOptionsMenu(menu, inflater);
     }
 }
